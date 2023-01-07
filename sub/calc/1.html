@@ -1,0 +1,1854 @@
+<html>
+<head>
+  
+<style type="text/css">
+/*TEXTAREA	{background-color: #8C1717; color: #000000; border:0; overflow: auto}
+INPUT.radio	{background-color: #8C1717; color: #000000;}
+INPUT		{background-color: #8C1717; color: #000000}
+SELECT	{background-color: #FFFFFF; color: #000000}*/
+TABLE {background-color: #660000; color: #FCFFF0; font-family: Arial}
+Title {font-size: 16pt; color: #FCFFF0; }
+Label {font-size: 12pt; text-align: left; color: #FCFFF0}
+TEXTAREA {background-color: #FCFFF0; border-color: #FCFFF0; color: #292421; border: 3; overflow: auto}
+INPUT {background-color: #FCFFF0; color: #292421}
+SELECT {background-color: #FCFFF0; color: #292421}
+td{border:0px;}
+.Title {
+color:#FCFFF0;
+font-size:20px;
+text-align:center;
+}
+.radio{background-color:#660000;}
+#Price{font-size:18px; text-decoration:underline;}
+</style>
+
+<script language="Javascript" type="text/javascript">
+
+
+///////////////////////////////////////////
+//BEGIN PREFIX/BASE ITEM/SUFFIX DEFINITIONS
+///////////////////////////////////////////
+
+//base item declarations
+function Item(name,ilvl,iClass,price)
+{
+	this.name = name;
+	this.ilvl = ilvl;
+	this.iClass = iClass;
+	this.price = price;
+}
+baseEQ = new Array(69);
+baseEQ[0]=new Item("Cap",1,"Helm",15);
+baseEQ[1]=new Item("Skull Cap",4,"Helm",25);
+baseEQ[2]=new Item("Helm",8,"Helm",40);
+baseEQ[3]=new Item("Full Helm",12,"Helm",90);
+baseEQ[4]=new Item("Crown",16,"Helm",200);
+baseEQ[5]=new Item("Great Helm",20,"Helm",400);
+baseEQ[6]=new Item("Rags",1,"Light Armor",5);
+baseEQ[7]=new Item("Cape",1,"Light Armor",10);
+baseEQ[8]=new Item("Cloak",2,"Light Armor",40);
+baseEQ[9]=new Item("Robe",3,"Light Armor",75);
+baseEQ[10]=new Item("Quilted Armor",4,"Light Armor",200);
+baseEQ[11]=new Item("Leather Armor",6,"Light Armor",300);
+baseEQ[12]=new Item("Hard Leather Armor",7,"Light Armor",450);
+baseEQ[13]=new Item("Studded Leather Armor",9,"Light Armor",700);
+baseEQ[14]=new Item("Ring Mail",11,"Medium Armor",900);
+baseEQ[15]=new Item("Chain Mail",13,"Medium Armor",1250);
+baseEQ[16]=new Item("Scale Mail",15,"Medium Armor",2300);
+baseEQ[17]=new Item("Splint Mail",17,"Medium Armor",3250);
+baseEQ[18]=new Item("Breast Plate",16,"Heavy Armor",2800);
+baseEQ[19]=new Item("Plate Mail",19,"Heavy Armor",4600);
+baseEQ[20]=new Item("Field Plate",21,"Heavy Armor",5800);
+baseEQ[21]=new Item("Gothic Plate",23,"Heavy Armor",8000);
+baseEQ[22]=new Item("Full Plate Mail",25,"Heavy Armor",6500);
+baseEQ[23]=new Item("Buckler",1,"Shield",30);
+baseEQ[24]=new Item("Small Shield",5,"Shield",90);
+baseEQ[25]=new Item("Large Shield",9,"Shield",200);
+baseEQ[26]=new Item("Kite Shield",14,"Shield",400);
+baseEQ[27]=new Item("Gothic Shield",23,"Shield",2300);
+baseEQ[28]=new Item("Tower Shield",20,"Shield",850);
+baseEQ[29]=new Item("Dagger",1,"Sword",60);
+baseEQ[30]=new Item("Short Sword",1,"Sword",120);
+baseEQ[31]=new Item("Sabre",1,"Sword",170);
+baseEQ[32]=new Item("Scimitar",4,"Sword",200);
+baseEQ[33]=new Item("Blade",4,"Sword",280);
+baseEQ[34]=new Item("Falchion",2,"Sword",250);
+baseEQ[35]=new Item("Long Sword",6,"Sword",350);
+baseEQ[36]=new Item("Claymore",5,"Sword",450);
+baseEQ[37]=new Item("Broad Sword",8,"Sword",750);
+baseEQ[38]=new Item("Bastard Sword",10,"Sword",1000);
+baseEQ[39]=new Item("Two-Handed Sword",14,"Sword",1800);
+baseEQ[40]=new Item("Great Sword",17,"Sword",3000);
+baseEQ[41]=new Item("Small Axe",2,"Axe",150);
+baseEQ[42]=new Item("Axe",4,"Axe",450);
+baseEQ[43]=new Item("Large Axe",6,"Axe",750);
+baseEQ[44]=new Item("Broad Axe",8,"Axe",1000);
+baseEQ[45]=new Item("Battle Axe",10,"Axe",1500);
+baseEQ[46]=new Item("Great Axe",12,"Axe",2500);
+baseEQ[47]=new Item("Club",1,"Club",20);
+baseEQ[48]=new Item("Spiked Club",4,"Club",225);
+baseEQ[49]=new Item("Mace",2,"Club",200);
+baseEQ[50]=new Item("Morning Star",3,"Club",300);
+baseEQ[51]=new Item("Flail",7,"Club",500);
+baseEQ[52]=new Item("War Hammer",5,"Club",600);
+baseEQ[53]=new Item("Maul",10,"Club",900);
+baseEQ[54]=new Item("Short Bow",1,"Bow",100);
+baseEQ[55]=new Item("Long Bow",5,"Bow",250);
+baseEQ[56]=new Item("Hunter's Bow",3,"Bow",350);
+baseEQ[57]=new Item("Composite Bow",7,"Bow",600);
+baseEQ[58]=new Item("Short Battle Bow",9,"Bow",750);
+baseEQ[59]=new Item("Long Battle Bow",11,"Bow",1000);
+baseEQ[60]=new Item("Short War Bow",15,"Bow",1500);
+baseEQ[61]=new Item("Long War Bow",19,"Bow",2000);
+baseEQ[62]=new Item("Short Staff",1,"Staff",30);
+baseEQ[63]=new Item("Long Staff",4,"Staff",100);
+baseEQ[64]=new Item("Composite Staff",6,"Staff",500);
+baseEQ[65]=new Item("Quarter Staff",9,"Staff",1000);
+baseEQ[66]=new Item("War Staff",12,"Staff",1500);
+baseEQ[67]=new Item("Ring",5,"Jewelry",1000);
+baseEQ[68]=new Item("Amulet",16,"Jewelry",1200);
+
+//unique item declarations
+unique = new Array(75);
+unique[0]= new Item("Aguinara’s Hatchet",0,"Small Axe",24800);
+unique[1]= new Item("Baranar’s Star",0,"Morning Star",6850);
+unique[2]= new Item("Black Razor",0,"Dagger",2000);
+unique[3]= new Item("Blackoak Shield",0,"Small Shield",5725);
+unique[4]= new Item("Bloodslayer",0,"Broad Axe",2500);
+unique[5]= new Item("Bow of the Dead",0,"Composite Bow",2500);
+unique[6]= new Item("Civerb’s Cudgel",0,"Mace",2000);
+unique[7]= new Item("Constricting Ring",0,"Ring",62000);
+unique[8]= new Item("Deadly Hunter",0,"Composite Bow",8750);
+unique[9]= new Item("Demonspike Coat",0,"Full Plate Mail",251175);
+unique[10]= new Item("Doombringer",0,"Bastard Sword",18250);
+unique[11]= new Item("Dragon’s Breach",0,"Kite Shield",19200);
+unique[12]= new Item("Dreamflange",0,"Mace",26450);
+unique[13]= new Item("Eaglehorn",0,"Long Battle Bow",42500);
+unique[14]= new Item("Flamedart",0,"Hunter’s Bow",14250);
+unique[15]= new Item("Fleshstinger",0,"Longbow",16500);
+unique[16]= new Item("Fool’s Crest",0,"Helm",10150);
+unique[17]= new Item("Gibbous Moon",0,"Broadsword",6660);
+unique[18]= new Item("Gleamsong",0,"Short Staff",6520);
+unique[19]= new Item("Gnarled Root",0,"Club",9820);
+unique[20]= new Item("Gotterdamerung",0,"Great Helm",54900);
+unique[21]= new Item("Gryphons Claw",0,"Falchion",1000);
+unique[22]= new Item("Hammer of Jholm",0,"Maul",8700);
+unique[23]= new Item("Hellslayer",0,"Battle Axe",26200);
+unique[24]= new Item("Helm of Sprits",0,"Helm",7525);
+unique[25]= new Item("Holy Defender",0,"Large Shield",13800);
+unique[26]= new Item("Ice Shank",0,"Long Sword",5250);
+unique[27]= new Item("Immolator",0,"Long Staff",3900);
+unique[28]= new Item("Inferno",0,"Long Sword",34600);
+unique[29]= new Item("Leather of Aut",0,"Leather Armor",10550);
+unique[30]= new Item("Lightsabre",0,"Sabre",19150);
+unique[31]= new Item("Messerschmidt’s Reaver",0,"Great Axe",58000);
+unique[32]= new Item("Mindcry",0,"Quarter Staff",41500);
+unique[33]= new Item("Naj’s Light Plate",0,"Plate Mail",78700);
+unique[34]= new Item("Naj’s Puzzler",0,"Long Staff",34000);
+unique[35]= new Item("Nightscape",0,"Cape",11600);
+unique[36]= new Item("Overlord’s Helm",0,"Helm",12500);
+unique[37]= new Item("Ring of Engagement",0,"Ring",12476);
+unique[38]= new Item("Ring of Regha",0,"Ring",4175);
+unique[39]= new Item("Rod of Onan",0,"War Staff",44167);
+unique[40]= new Item("Royal Circlet",0,"Crown",24875);
+unique[41]= new Item("Scavenger Carapace",0,"Breastplate",14000);
+unique[42]= new Item("Schaefer’s Hammer",0,"War Hammer",56125);
+unique[43]= new Item("Shadowhawk",0,"Broadsword",13750);
+unique[44]= new Item("Sharp Beak",0,"Large Axe",2850);
+unique[45]= new Item("Sparking Mail",0,"Chain Mail",15750);
+unique[46]= new Item("Split Skull Shield",0,"Buckler",2025);
+unique[47]= new Item("Staff of Shadows",0,"Long Staff",1250);
+unique[48]= new Item("Stonecleaver",0,"Broad Axe",23900);
+unique[49]= new Item("Storm Spire",0,"War Staff",22500);
+unique[50]= new Item("Stormshield",0,"Gothic Shield",49000);
+unique[51]= new Item("The Blackoak Bow",0,"Longbow",2500);
+unique[52]= new Item("The Bleeder",0,"Ring",8500);
+unique[53]= new Item("The Bonesaw",0,"Claymore",4400);
+unique[54]= new Item("The Celestial Axe",0,"Battle Axe",14100);
+unique[55]= new Item("The Celestial Bow",0,"Long Bow",1200);
+unique[56]= new Item("The Celestial Star",0,"Flail",7810);
+unique[57]= new Item("The Cranium Basher",0,"Maul",36500);
+unique[58]= new Item("The Defender",0,"Sabre",2000);
+unique[59]= new Item("The Executioner’s Blade",0,"Falchion",7080);
+unique[60]= new Item("The Falcon’s Talon",0,"Scimitar",7867);
+unique[61]= new Item("The Gladiator’s Bane",0,"Studded Leather Armor",3450);
+unique[62]= new Item("The Grandfather",0,"Great Sword",119800);
+unique[63]= new Item("The Grizzly",0,"Two-Handed Sword",50000);
+unique[64]= new Item("The Needler",0,"Short Bow",8900);
+unique[65]= new Item("The Protector",0,"Short Staff",17240);
+unique[66]= new Item("The Rainbow Cloak",0,"Cloak",4900);
+unique[67]= new Item("The Rift Bow",0,"Short Bow",1800);
+unique[68]= new Item("Thinking Cap",0,"Skullcap",2020);
+unique[69]= new Item("Thundercall",0,"Composite Staff",22250);
+unique[70]= new Item("Torn Flesh of Souls",0,"Rags",4825);
+unique[71]= new Item("Wicked Axe",0,"Large Axe",31150);
+unique[72]= new Item("Windforce",0,"Long War Bow",37750);
+unique[73]= new Item("Wisdom’s Wrap",0,"Robe",6200);
+unique[74]= new Item("Wizardspike",0,"Dagger",12920);
+
+
+
+//prefix declarations
+function Affix(name,qlvl,value,spawn,cursed,B,range,M)
+{
+	this.name = name;
+	this.qlvl = qlvl;
+	this.value = value;
+	this.spawn = spawn;
+	this.cursed = cursed;
+	this.B = B;
+	this.range = range;
+	this.M = M;
+}
+prefix = new Array(81);
+prefix[0]= new Affix("Hyena's",4,"11-25, mana","---T-J",true,100,900,-2);
+prefix[1]= new Affix("Frog's",1,"10-1 mana","---T-J",true,0,0,-2);
+prefix[2]= new Affix("Spider's",1,"10-15, mana","---T-J",false,500,500,2);
+prefix[3]= new Affix("Raven's",5,"15-20, mana","---T-J",false,1100,900,3);
+prefix[4]= new Affix("Snake's",9,"21-30, mana","---T-J",false,2100,1900,5);
+prefix[5]= new Affix("Serpent's",15,"30-40, mana","---T-J",false,4100,1900,7);
+prefix[6]= new Affix("Drake's",21,"41-50, mana","---T-J",false,6100,3900,9);
+prefix[7]= new Affix("Dragon's",27,"51-60, mana","---T-J",false,10100,4900,11);
+prefix[8]= new Affix("Vulnerable",3,"-100-51,% AC","AS----",true,0,0,-3);
+prefix[9]= new Affix("Rusted",1,"-50-25,% AC","AS----",true,0,0,-2);
+prefix[10]= new Affix("Fine",1,"20-30,% AC","AS----",false,20,80,2);
+prefix[11]= new Affix("Strong",3,"31-40,% AC","AS----",false,1200,80,3);
+prefix[12]= new Affix("Grand",6,"41-55,% AC","AS----",false,220,80,5);
+prefix[13]= new Affix("Valiant",10,"56-70,% AC","AS----",false,320,80,7);
+prefix[14]= new Affix("Glorious",14,"71-90,% AC","AS----",false,420,180,9);
+prefix[15]= new Affix("Blessed",19,"91-110,% AC","AS----",false,620,180,11);
+prefix[16]= new Affix("Saintly",24,"111-130,% AC","AS----",false,820,380,13);
+prefix[17]= new Affix("Awesome",28,"131-150,% AC","AS----",false,1220,780,15);
+prefix[18]= new Affix("Holy",35,"151-170,% AC","AS----",false,5200,800,17);
+prefix[19]= new Affix("Godly",60,"171-200,% AC","AS----",false,6200,800,20);
+prefix[20]= new Affix("Tin",3,"-10-6% to-hit","--W-BJ",true,0,0,-3);
+prefix[21]= new Affix("Brass",1,"-5-1% to-hit","--W-BJ",true,0,0,-2);
+prefix[22]= new Affix("Bronze",1,"1-5,% to-hit","--W-BJ",false,100,400,2);
+prefix[23]= new Affix("Iron",4,"6-10,% to-hit","--W-BJ",false,600,400,3);
+prefix[24]= new Affix("Steel",6,"11-15,% to-hit","--W-BJ",false,1100,400,5);
+prefix[25]= new Affix("Silver",9,"16-20,% to-hit","--W-BJ",false,1600,400,7);
+prefix[26]= new Affix("Gold",12,"21-30,% to-hit","--W-BJ",false,2100,900,9);
+prefix[27]= new Affix("Platinum",16,"31-40,% to-hit","--W-B-",false,3100,900,11);
+prefix[28]= new Affix("Mithril",20,"41-60,% to-hit","--W-B-",false,4100,1900,13);
+prefix[29]= new Affix("Meteoric",23,"61-80,% to-hit","--W-B-",false,6100,3900,15);
+prefix[30]= new Affix("Weird",35,"81-100,% to-hit","--W-B-",false,10100,3900,17);
+prefix[31]= new Affix("Strange",60,"101-150,% to-hit","--W-B-",false,14100,5900,20);
+prefix[32]= new Affix("Clumsy",5,"-75-50% damage","--WTB-",true,0,0,-7);
+prefix[33]= new Affix("Dull",1,"-45-25% damage","--WTB-",true,0,0,-5);
+prefix[34]= new Affix("Sharp",1,"20-35,% damage","--WTB-",true,350,600,5);
+prefix[35]= new Affix("Fine",6,"36-50,% damage","--WTB-",false,1100,600,7);
+prefix[36]= new Affix("Warrior's",10,"51-65,% damage","--WTB-",false,1850,600,13);
+prefix[37]= new Affix("Soldier's",15,"66-80,% damage","--WT--",false,2600,1350,17);
+prefix[38]= new Affix("Lord's",19,"81-95,% damage","--WT--",false,4100,1850,21);
+prefix[39]= new Affix("Knight's",23,"96-110,% damage","--WT--",false,6100,2350,26);
+prefix[40]= new Affix("Master's",28,"111-125,% damage","--WT--",false,8600,4400,30);
+prefix[41]= new Affix("Champion's",40,"126-150,% damage","--WT--",false,15200,8800,33);
+prefix[42]= new Affix("King's",28,"151-175,% damage","--WT--",false,24100,10900,38);
+prefix[43]= new Affix("Useless",5,"-100-100%,damage","--W-B-",true,0,0,-8);
+prefix[44]= new Affix("Bent",3,"-75-50% damage","--W-B-",true,0,0,-4);
+prefix[45]= new Affix("Weak",1,"-45-25% damage","--W-B-",true,0,0,-3);
+prefix[46]= new Affix("Jagged",4,"20-35,% damage","--W-B-",false,250,200,3);
+prefix[47]= new Affix("Deadly",6,"36-50,% damage","--W-B-",false,500,200,4);
+prefix[48]= new Affix("Heavy",9,"51-65,% damage","--W-B-",false,750,200,5);
+prefix[49]= new Affix("Vicious",12,"66-80,% damage","--W-B-",false,1000,450,8);
+prefix[50]= new Affix("Brutal",16,"81-95,% damage","--W-B-",false,1500,450,10);
+prefix[51]= new Affix("Massive",20,"96-110,% damage","--W-B-",false,2000,450,13);
+prefix[52]= new Affix("Savage",23,"111-125,% damage","--W-B-",false,2500,500,15);
+prefix[53]= new Affix("Ruthless",35,"126-150,% damage","--W-B-",false,10100,4900,17);
+prefix[54]= new Affix("Merciless",60,"151-175,% damage","--W-B-",false,15000,5000,20);
+prefix[55]= new Affix("White",4,"10-20,% resist magic","ASWTBJ",false,500,1000,2);
+prefix[56]= new Affix("Pearl",10,"21-30,% resist magic","ASWTBJ",false,2100,900,2);
+prefix[57]= new Affix("Ivory",16,"31-40,% resist magic","ASWTBJ",false,3100,900,2);
+prefix[58]= new Affix("Crystal",20,"41-50,% resist magic","ASWTBJ",false,8200,3800,3);
+prefix[59]= new Affix("Diamond",26,"51-60,% resist magic","ASWTBJ",false,17100,2900,5);
+prefix[60]= new Affix("Red",4,"10-20,% resist fire","ASWTBJ",false,500,1000,2);
+prefix[61]= new Affix("Crimson (+21-30%)",10,"21-30,% resist fire","ASWTBJ",false,2100,900,2);
+prefix[62]= new Affix("Crimson (+31-40%)",16,"31-40,% resist fire","ASWTBJ",false,3100,900,2);
+prefix[63]= new Affix("Garnet",20,"41-50,% resist fire","ASWTBJ",false,8200,3800,3);
+prefix[64]= new Affix("Ruby",26,"51-60,% resist fire","ASWTBJ",false,17100,2900,5);
+prefix[65]= new Affix("Blue",4,"10-20,% resist lightning","ASWTBJ",false,500,1000,2);
+prefix[66]= new Affix("Azure",10,"21-30,% resist lightning","ASWTBJ",false,2100,900,2);
+prefix[67]= new Affix("Lapis",16,"31-40,% resist lightning","ASWTBJ",false,3100,900,2);
+prefix[68]= new Affix("Cobalt",20,"41-50,% resist lightning","ASWTBJ",false,8200,3800,3);
+prefix[69]= new Affix("Sapphire",26,"51-60,% resist lightning","ASWTBJ",false,17100,2900,5);
+prefix[70]= new Affix("Topaz",8,"10-15,% resist all","ASWTBJ",false,2000,3000,3);
+prefix[71]= new Affix("Amber",12,"16-20,% resist all","ASWTBJ",false,7400,2600,3);
+prefix[72]= new Affix("Jade",18,"21-30,% resist all","ASWTBJ",false,11000,4000,3);
+prefix[73]= new Affix("Obsidian",24,"31-40,% resist all","ASWTBJ",false,24000,16000,4);
+prefix[74]= new Affix("Emerald",31,"41-50,% resist all","-SWTB-",false,61000,14000,7);
+prefix[75]= new Affix("Angel's",15,"+1 spell levels","---T--",false,25000,0,2);
+prefix[76]= new Affix("Arch-Angel's",25,"+2 spell levels","---T--",false,50000,0,3);
+prefix[77]= new Affix("Plentiful",4,"x2 charges","---T--",false,2000,0,2);
+prefix[78]= new Affix("Bountiful",9,"x3 charges","---T--",false,3000,0,3);
+prefix[79]= new Affix("Flaming",7,"+1-10 fire damage","--WT--",false,5000,0,2);
+prefix[80]= new Affix("Lightning",18,"+2-20 lightning damage","--WT--",false,10000,0,2);
+
+//suffix declarations
+suffix = new Array(95);
+suffix[0]= new Affix("Frailty",3,"-10-6 strength","ASW-BJ",true,0,0,-3);
+suffix[1]= new Affix("Weakness",1,"-5-1 strength","ASW-BJ",true,0,0,-2);
+suffix[2]= new Affix("Strength",1,"1-5, strength","ASW-BJ",false,200,800,2);
+suffix[3]= new Affix("Might",5,"6-10, strength","ASW-BJ",false,1200,800,3);
+suffix[4]= new Affix("Power",11,"11-15, strength","ASW-BJ",false,2200,800,4);
+suffix[5]= new Affix("Giants",17,"16-20, strength","A-W-BJ",false,3200,1800,7);
+suffix[6]= new Affix("Titans",23,"21-30, strength","--W--J",false,5200,4800,10);
+suffix[7]= new Affix("the Fool",3,"-10-6 magic","ASWTBJ",true,0,0,-3);
+suffix[8]= new Affix("Dyslexia",1,"-5-1 magic","ASWTBJ",true,0,0,-2);
+suffix[9]= new Affix("Magic",1,"1-5, magic","ASWTBJ",false,200,800,2);
+suffix[10]= new Affix("the Mind",5,"6-10, magic","ASWTBJ",false,1200,800,3);
+suffix[11]= new Affix("Brilliance",11,"11-15, magic","ASWTBJ",false,2200,800,4);
+suffix[12]= new Affix("Sorcery",17,"16-20, magic","A-WTBJ",false,3200,1800,7);
+suffix[13]= new Affix("Wizardry",23,"21-30, magic","---T-J",false,5200,4800,10);
+suffix[14]= new Affix("Paralysis",3,"-10-6 dexterity","ASW-BJ",true,0,0,-3);
+suffix[15]= new Affix("Atrophy",1,"-5-1 dexterity","ASW-BJ",true,0,0,-2);
+suffix[16]= new Affix("Dexterity",1,"1-5, dexterity","ASW-BJ",false,200,800,2);
+suffix[17]= new Affix("Skill",5,"6-10, dexterity","ASW-BJ",false,1200,800,3);
+suffix[18]= new Affix("Accuracy",11,"11-15, dexterity","ASW-BJ",false,2200,800,4);
+suffix[19]= new Affix("Precision",17,"16-20, dexterity","A-W-BJ",false,3200,1800,7);
+suffix[20]= new Affix("Perfection",23,"21-30, dexterity","-----J",false,5200,4800,10);
+suffix[21]= new Affix("Illness",3,"-10-6 vitality","ASW-BJ",true,0,0,-3);
+suffix[22]= new Affix("Disease",1,"-5-1 vitality","ASW-BJ",true,0,0,-2);
+suffix[23]= new Affix("Vitality",1,"1-5, vitality","ASW-BJ",false,200,800,2);
+suffix[24]= new Affix("Zest",5,"6-10, vitality","ASW-BJ",false,1200,800,3);
+suffix[25]= new Affix("Vim",11,"11-15, vitality","ASW-BJ",false,2200,800,4);
+suffix[26]= new Affix("Vigor",17,"16-20, vitality","A-W-BJ",false,3200,1800,7);
+suffix[27]= new Affix("Life",23,"21-30, vitality","-----J",false,5200,4800,10);
+suffix[28]= new Affix("Trouble",12,"-10-6 all attributes","ASW-BJ",true,0,0,-10);
+suffix[29]= new Affix("the Pit",5,"-5-1 all attributes","ASW-BJ",true,0,0,-5);
+suffix[30]= new Affix("the Sky",5,"1-3, all attributes","ASW-BJ",false,800,3200,5);
+suffix[31]= new Affix("the Moon",11,"4-7, all attributes","ASW-BJ",false,4800,3200,10);
+suffix[32]= new Affix("the Stars",17,"8-11, all attributes","A-W-BJ",false,8800,3200,15);
+suffix[33]= new Affix("the Heavens",25,"12-15, all attributes","--W-BJ",false,12800,7200,20);
+suffix[34]= new Affix("the Zodiac",30,"16-20, all attributes","-----J",false,20800,19200,30);
+suffix[35]= new Affix("the Vulture",4,"-25-11 life","AS---J",true,0,0,-4);
+suffix[36]= new Affix("the Jackal",1,"-10-1 life","AS---J",true,0,0,-2);
+suffix[37]= new Affix("the Fox",1,"10-15, life","AS---J",false,100,900,2);
+suffix[38]= new Affix("the Jaguar",5,"16-20, life","AS---J",false,1100,900,3);
+suffix[39]= new Affix("the Eagle",9,"21-30, life","AS---J",false,2100,1900,5);
+suffix[40]= new Affix("the Wolf",15,"31-40, life","AS---J",false,4100,1900,7);
+suffix[41]= new Affix("the Tiger",21,"41-50, life","AS---J",false,6100,3900,9);
+suffix[42]= new Affix("the Lion",27,"51-60, life","A----J",false,10100,4900,11);
+suffix[43]= new Affix("the Mammoth",35,"61-80, life","A-----",false,15100,3900,12);
+suffix[44]= new Affix("the Whale",60,"81-100, life","A-----",false,19100,10900,13);
+suffix[45]= new Affix("Quality",2,"1-2, damage","--W-B-",false,100,100,2);
+suffix[46]= new Affix("Maiming",7,"3-5, damage","--W-B-",false,1300,200,3);
+suffix[47]= new Affix("Slaying",15,"6-8, damage","--W---",false,2600,400,5);
+suffix[48]= new Affix("Gore",25,"9-12, damage","--W---",false,4100,900,8);
+suffix[49]= new Affix("Carnage",35,"13-16, damage","--W---",false,5100,4900,10);
+suffix[50]= new Affix("Slaughter",60,"17-20, damage","--W---",false,10100,4900,13);
+suffix[51]= new Affix("Pain",4,"+4-2 dfe","AS---J",true,0,0,-4);
+suffix[52]= new Affix("Tears",2,"+1 dfe","AS---J",true,0,0,-2);
+suffix[53]= new Affix("Health",2,"-1 dfe","AS---J",false,200,0,2);
+suffix[54]= new Affix("Protection",6,"-2 dfe","AS----",false,400,0,4);
+suffix[55]= new Affix("Absorption",12,"-3 dfe","AS----",false,1001,0,10);
+suffix[56]= new Affix("Deflection",20,"-4 dfe","A-----",false,2500,0,15);
+suffix[57]= new Affix("Osmosis",50,"5-6, dfe","A-----",false,7500,2500,20);
+suffix[58]= new Affix("Flame",1,"+1-3 fire damage","----B-",false,2000,0,2);
+suffix[59]= new Affix("Fire",11,"+1-6 fire damage","----B-",false,4000,0,4);
+suffix[60]= new Affix("Burning",35,"+1-16 fire damage","----B-",false,6000,0,6);
+suffix[61]= new Affix("Shock",13,"+1-6 lightning damage","----B-",false,6000,0,2);
+suffix[62]= new Affix("Lightning",21,"+1-10 lightning damage","----B-",false,8000,0,4);
+suffix[63]= new Affix("Thunder",60,"+1-20 lightning damage","----B-",false,12000,0,6);
+suffix[64]= new Affix("the Leech",8,"+3% life steal","--W---",false,7500,0,3);
+suffix[65]= new Affix("Blood",19,"+5% life steal","--W---",false,15000,0,3);
+suffix[66]= new Affix("the Bat",8,"+3% mana steal","--W---",false,7500,0,3);
+suffix[67]= new Affix("Vampires",19,"+5% mana steal","--W---",false,15000,0,3);
+suffix[68]= new Affix("Piercing",1,"pierce armor (2-6 AC)","--W-B-",false,1000,0,3);
+suffix[69]= new Affix("Puncturing",9,"pierce armor (4-12 AC)","--W-B-",false,2000,0,6);
+suffix[70]= new Affix("Bashing",17,"pierce armor (8-24 AC)","--W---",false,4000,0,12);
+suffix[71]= new Affix("the Dark",6,"-40% light radius","A-W--J",true,0,0,-3);
+suffix[72]= new Affix("the Night",3,"-20% light radius","A-W--J",true,0,0,-2);
+suffix[73]= new Affix("Light",4,"+20% light radius","A-W--J",false,750,0,2);
+suffix[74]= new Affix("Radiance",8,"+40% light radius","A-W--J",false,1500,0,3);
+suffix[75]= new Affix("Readiness",1,"quick attack","--WTB-",false,2000,0,2);
+suffix[76]= new Affix("Swiftness",10,"fast attack","--WTB-",false,4000,0,4);
+suffix[77]= new Affix("Speed",19,"fastest attack","--WT--",false,8000,0,8);
+suffix[78]= new Affix("Haste",27,"fastest attack","--WT--",false,16000,0,16);
+suffix[79]= new Affix("Balance",1,"fast hit recovery","A----J",false,2000,0,2);
+suffix[80]= new Affix("Stability",10,"faster hit recovery","A----J",false,4000,0,4);
+suffix[81]= new Affix("Harmony",20,"fastest hit recovery","A----J",false,8000,0,8);
+suffix[82]= new Affix("Fragility",3,"durability = 1","ASW---",true,0,0,-4);
+suffix[83]= new Affix("Brittleness",1,"-75-26% durability","ASW---",true,0,0,-2);
+suffix[84]= new Affix("Sturdiness",1,"-26-75% durability","ASW---",false,100,0,2);
+suffix[85]= new Affix("Craftsmanship",6,"51-100% durability","ASW---",false,200,0,2);
+suffix[86]= new Affix("Structure",12,"101-200% durability","ASW---",false,300,0,2);
+suffix[87]= new Affix("Many",3,"100% durability","----B-",false,750,0,2);
+suffix[88]= new Affix("Plenty",7,"200% durability","----B-",false,1500,0,3);
+suffix[89]= new Affix("the Ages",25,"indestructible","ASW---",false,600,0,5);
+suffix[90]= new Affix("Corruption",5,"removes all mana","ASW---",true,-1000,0,2);
+suffix[91]= new Affix("the Bear",5,"knocks target back","--WTB-",false,750,0,2);
+suffix[92]= new Affix("Blocking",5,"fast block","-S----",false,4000,0,4);
+suffix[93]= new Affix("Thieves",11,"absorb half trap damage","AS---J",false,1500,0,2);
+suffix[94]= new Affix("Thorns",1,"attacker takes 1-3 damage","AS----",false,500,0,2);
+
+//spell declarations
+function Spell(name,qlvl,charges,spawnStaff,P)
+{
+	this.name = name;
+	this.qlvl = qlvl;
+	this.charges = charges;
+	this.spawnStaff = spawnStaff;
+	this.P = P;
+}
+spell = new Array(28);
+spell[0] = new Spell("Apocalypse",15,"8-12",true,400);
+spell[1] = new Spell("Blood Star",13,"20-60",true,360);
+spell[2] = new Spell("Bone Spirit",7,"20-60",true,160);
+spell[3] = new Spell("Chain Lightning",7,"20-60",true,150);
+spell[4] = new Spell("Charged Bolt",1,"40-80",true,10);
+spell[5] = new Spell("Elemental",6,"20-60",true,140);
+spell[6] = new Spell("Fireball",7,"40-80",true,60);
+spell[7] = new Spell("Firebolt",1,"40-80",true,10);
+spell[8] = new Spell("Fire Wall",2,"8-16",true,80);
+spell[9] = new Spell("Flame Wave",8,"20-40",true,130);
+spell[10] = new Spell("Flash",4,"20-40",true,100);
+spell[11] = new Spell("Golem",9,"16-32",true,220);
+spell[12] = new Spell("Guardian",8,"16-32",true,190);
+spell[13] = new Spell("Healing",1,"20-40",true,10);
+spell[14] = new Spell("Heal Other",1,"20-40",true,10);
+spell[15] = new Spell("Holy Bolt",1,"40-80",true,10);
+spell[16] = new Spell("Identify",null,null,false,null);
+spell[17] = new Spell("Inferno",1,"20-40",true,20);
+spell[18] = new Spell("Infravision",null,null,false,null);
+spell[19] = new Spell("Lightning",3,"20-60",true,30);
+spell[20] = new Spell("Mana Shield",5,"4-10",true,240);
+spell[21] = new Spell("Nova",10,"16-32",true,260);
+spell[22] = new Spell("Phasing",6,"40-80",true,40);
+spell[23] = new Spell("Resurrect",5,"4-10",true,50);
+spell[24] = new Spell("Stone Curse",5,"8-16",true,160);
+spell[25] = new Spell("Telekinesis",2,"20-40",true,40);
+spell[26] = new Spell("Teleport",12,"16-32",true,250);
+spell[27] = new Spell("Town Portal",3,"8-12",true,40);
+
+//invalid affix combinations
+invalidCombo = new Array(48);
+invalidCombo[0]="Angel's";	invalidCombo[24]="Trouble";
+invalidCombo[1]="Arch-Angel's";	invalidCombo[25]="Trouble";
+invalidCombo[2]="Blessed";	invalidCombo[26]="Trouble";
+invalidCombo[3]="Frog's";	invalidCombo[27]="Vitality";
+invalidCombo[4]="Glorious";	invalidCombo[28]="Trouble";
+invalidCombo[5]="Gold";		invalidCombo[29]="Pit";
+invalidCombo[6]="Gold";		invalidCombo[30]="the Vulture";
+invalidCombo[7]="Gold";		invalidCombo[31]="Corruption";
+invalidCombo[8]="Gold";		invalidCombo[32]="Pain";
+invalidCombo[9]="Gold";		invalidCombo[33]="the Dark";
+invalidCombo[10]="Gold";	invalidCombo[34]="the Bear";
+invalidCombo[11]="Mithril";	invalidCombo[35]="Trouble";
+invalidCombo[12]="Platinum";	invalidCombo[36]="Trouble";
+invalidCombo[13]="Saintly";	invalidCombo[37]="Trouble";
+invalidCombo[14]="Silver";	invalidCombo[38]="the Pit";
+invalidCombo[15]="Silver";	invalidCombo[39]="the Vulture";
+invalidCombo[16]="Silver";	invalidCombo[40]="corruption";
+invalidCombo[17]="Silver";	invalidCombo[41]="Pain";
+invalidCombo[18]="Silver";	invalidCombo[42]="the Dark";
+invalidCombo[19]="Silver";	invalidCombo[43]="the Bear";
+invalidCombo[20]="Spider's";	invalidCombo[44]="Vitality";
+invalidCombo[21]="Vicious";	invalidCombo[45]="Vim";
+invalidCombo[22]="Vicious";	invalidCombo[46]="Vigor";
+invalidCombo[23]="Vicious";	invalidCombo[47]="Radiance";
+
+///////////////////////////////
+//BEGIN TABLE DISPLAY FUNCTIONS
+///////////////////////////////
+
+//change based on class
+function updateClass()
+{
+	var i;
+	var iClass = document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text;
+	var prefixIndex=1;
+	var suffixIndex=1;
+	var previousP = ((document.SelectItem.Prefix.selectedIndex >= 0)? document.SelectItem.Prefix.options[document.SelectItem.Prefix.selectedIndex].text: 0);
+	var previousS = ((document.SelectItem.Suffix.selectedIndex >= 0)? document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].text: 0);
+
+	
+	//clear current entries
+	for (i=(document.SelectItem.Prefix.options.length)-1; i>=0; i--)
+	{
+		document.SelectItem.Prefix.options[i]=null;
+	}
+	for (i=(document.SelectItem.Base.options.length)-1; i>=0; i--)
+	{
+		document.SelectItem.Base.options[i]=null;
+	}	
+	for (i=(document.SelectItem.Suffix.options.length)-1; i>=0; i--)
+	{
+		document.SelectItem.Suffix.options[i]=null;
+	}
+
+	if (iClass != "Select this first")
+	{
+		document.SelectItem.Prefix.disabled = false;
+		document.SelectItem.Base.disabled = false;
+		document.SelectItem.Suffix.disabled = false;
+	}
+	else
+	{
+		for (i=(document.SelectItem.Pvalue.options.length)-1; i>=0; i--)
+		{
+			document.SelectItem.Pvalue.options[i]=null;
+		}
+		for (i=(document.SelectItem.Svalue.options.length)-1; i>=0; i--)
+		{
+			document.SelectItem.Svalue.options[i]=null;
+		}
+		document.SelectItem.Prefix.options[0] = new Option(" "," ",true);
+		document.SelectItem.Prefix.options[1] = new Option("1234567890"," ");
+		document.SelectItem.Prefix.disabled = true;
+		document.SelectItem.Base.options[0] = new Option(" "," ",true);
+		document.SelectItem.Base.options[1] = new Option("Select this first"," ");
+		document.SelectItem.Base.disabled = true;
+		document.SelectItem.Suffix.options[0] = new Option(" "," ",true);
+		document.SelectItem.Suffix.options[1] = new Option("1234567890"," ");
+		document.SelectItem.Suffix.disabled = true;
+		document.SelectItem.Pvalue.options[0] = new Option(" "," ",true);
+		document.SelectItem.Pvalue.options[1] = new Option("12345"," ");
+		document.SelectItem.Pvalue.disabled = true;
+		document.SelectItem.Svalue.options[0] = new Option(" "," ",true);
+		document.SelectItem.Svalue.options[1] = new Option("12345"," ");
+		document.SelectItem.Svalue.disabled = true;
+		return;
+	}
+
+	//new entries
+	if (iClass == "Helm")
+	{
+		//prefix
+		document.SelectItem.Prefix.options[0] = new Option("None","None",true);
+		for (i=0; i<prefix.length; i++)
+		{
+			if (prefix[i].spawn.indexOf("A") > -1)
+			{
+				document.SelectItem.Prefix.options[prefixIndex++] = new Option((prefix[i].cursed) ? prefix[i].name + " (c)": prefix[i].name,i);
+				if (previousP == document.SelectItem.Prefix.options[prefixIndex-1].text)
+				{
+					document.SelectItem.Prefix.options[prefixIndex-1].selected = true;
+				}
+			}
+		}
+
+		//base item
+		for (i=0; i<=5; i++)
+		{
+			document.SelectItem.Base.options[i] = new Option(baseEQ[i].name,i);
+		}
+
+		//suffix
+		document.SelectItem.Suffix.options[0] = new Option("None","None",true);
+		for (i=0; i<suffix.length; i++)
+		{
+			if (suffix[i].spawn.indexOf("A") > -1)
+			{
+				document.SelectItem.Suffix.options[suffixIndex++] = new Option((suffix[i].cursed) ? suffix[i].name + " (c)": suffix[i].name,i);
+				if (previousS == document.SelectItem.Suffix.options[suffixIndex-1].text)
+				{
+					document.SelectItem.Suffix.options[suffixIndex-1].selected = true;
+				}
+			}
+		}
+	}
+	else if (iClass == "Armor")
+	{
+		//prefix
+		document.SelectItem.Prefix.options[0] = new Option("None","None",true);
+		for (i=0; i<prefix.length; i++)
+		{
+			if (prefix[i].spawn.indexOf("A") > -1)
+			{
+				document.SelectItem.Prefix.options[prefixIndex++] = new Option((prefix[i].cursed) ? prefix[i].name + " (c)": prefix[i].name,i);
+				if (previousP == document.SelectItem.Prefix.options[prefixIndex-1].text)
+				{
+					document.SelectItem.Prefix.options[prefixIndex-1].selected = true;
+				}
+			}
+
+		}
+
+		//base item
+		for (i=6; i<=22; i++)
+		{
+			document.SelectItem.Base.options[i-6] = new Option(baseEQ[i].name,i);
+		}
+
+		//suffix
+		document.SelectItem.Suffix.options[0] = new Option("None","None",true);
+		for (i=0; i<suffix.length; i++)
+		{
+			if (suffix[i].spawn.indexOf("A") > -1)
+			{
+				document.SelectItem.Suffix.options[suffixIndex++] = new Option((suffix[i].cursed) ? suffix[i].name + " (c)": suffix[i].name,i);
+				if (previousS == document.SelectItem.Suffix.options[suffixIndex-1].text)
+				{
+					document.SelectItem.Suffix.options[suffixIndex-1].selected = true;
+				}
+			}
+		}
+	}
+	else if (iClass == "Shield")
+	{
+		//prefix
+		document.SelectItem.Prefix.options[0] = new Option("None","None",true);
+		for (i=0; i<prefix.length; i++)
+		{
+			if (prefix[i].spawn.indexOf("S") > -1)
+			{
+				document.SelectItem.Prefix.options[prefixIndex++] = new Option((prefix[i].cursed) ? prefix[i].name + " (c)": prefix[i].name,i);
+				if (previousP == prefix[i].name)
+				{
+					document.SelectItem.Prefix.options[prefixIndex-1].selected = true;
+				}
+			}
+		}
+
+		//base item
+		for (i=23; i<=28; i++)
+		{
+			document.SelectItem.Base.options[i-23] = new Option(baseEQ[i].name,i);
+		}
+
+		//suffix
+		document.SelectItem.Suffix.options[0] = new Option("None","None",true);
+		for (i=0; i<suffix.length; i++)
+		{
+			if (suffix[i].spawn.indexOf("S") > -1)
+			{
+				document.SelectItem.Suffix.options[suffixIndex++] = new Option((suffix[i].cursed) ? suffix[i].name + " (c)": suffix[i].name,i);
+				if (previousS == document.SelectItem.Suffix.options[suffixIndex-1].text)
+				{
+					document.SelectItem.Suffix.options[suffixIndex-1].selected = true;
+				}
+			}
+		}
+	}
+	else if (iClass == "Sword")
+	{
+		//prefix
+		document.SelectItem.Prefix.options[0] = new Option("None","None",true);
+		for (i=0; i<prefix.length; i++)
+		{
+			if (prefix[i].spawn.indexOf("W") > -1)
+			{
+				document.SelectItem.Prefix.options[prefixIndex++] = new Option((prefix[i].cursed) ? prefix[i].name + " (c)": prefix[i].name,i);
+				if (previousP == document.SelectItem.Prefix.options[prefixIndex-1].text)
+				{
+					document.SelectItem.Prefix.options[prefixIndex-1].selected = true;
+				}
+			}
+		}
+
+		//base item
+		for (i=29; i<=40; i++)
+		{
+			document.SelectItem.Base.options[i-29] = new Option(baseEQ[i].name,i);
+		}
+
+		//suffix
+		document.SelectItem.Suffix.options[0] = new Option("None","None",true);
+		for (i=0; i<suffix.length; i++)
+		{
+			if (suffix[i].spawn.indexOf("W") > -1)
+			{
+				document.SelectItem.Suffix.options[suffixIndex++] = new Option((suffix[i].cursed) ? suffix[i].name + " (c)": suffix[i].name,i);
+				if (previousS == document.SelectItem.Suffix.options[suffixIndex-1].text)
+				{
+					document.SelectItem.Suffix.options[suffixIndex-1].selected = true;
+				}
+			}
+		}
+	}
+	else if (iClass == "Axe")
+	{
+		//prefix
+		document.SelectItem.Prefix.options[0] = new Option("None","None",true);
+		for (i=0; i<prefix.length; i++)
+		{
+			if (prefix[i].spawn.indexOf("W") > -1)
+			{
+				document.SelectItem.Prefix.options[prefixIndex++] = new Option((prefix[i].cursed) ? prefix[i].name + " (c)": prefix[i].name,i);
+				if (previousP == document.SelectItem.Prefix.options[prefixIndex-1].text)
+				{
+					document.SelectItem.Prefix.options[prefixIndex-1].selected = true;
+				}
+			}
+		}
+
+		//base item
+		for (i=41; i<=46; i++)
+		{
+			document.SelectItem.Base.options[i-41] = new Option(baseEQ[i].name,i);
+		}
+
+		//suffix
+		document.SelectItem.Suffix.options[0] = new Option("None","None",true);
+		for (i=0; i<suffix.length; i++)
+		{
+			if (suffix[i].spawn.indexOf("W") > -1)
+			{
+				document.SelectItem.Suffix.options[suffixIndex++] = new Option((suffix[i].cursed) ? suffix[i].name + " (c)": suffix[i].name,i);
+				if (previousS == document.SelectItem.Suffix.options[suffixIndex-1].text)
+				{
+					document.SelectItem.Suffix.options[suffixIndex-1].selected = true;
+				}
+			}
+		}
+	}
+	else if (iClass == "Club")
+	{
+		//prefix
+		document.SelectItem.Prefix.options[0] = new Option("None","None",true);
+		for (i=0; i<prefix.length; i++)
+		{
+			if (prefix[i].spawn.indexOf("W") > -1)
+			{
+				document.SelectItem.Prefix.options[prefixIndex++] = new Option((prefix[i].cursed) ? prefix[i].name + " (c)": prefix[i].name,i);
+				if (previousP == document.SelectItem.Prefix.options[prefixIndex-1].text)
+				{
+					document.SelectItem.Prefix.options[prefixIndex-1].selected = true;
+				}
+			}
+		}
+
+		//base item
+		for (i=47; i<=53; i++)
+		{
+			document.SelectItem.Base.options[i-47] = new Option(baseEQ[i].name,i);
+		}
+
+		//suffix
+		document.SelectItem.Suffix.options[0] = new Option("None","None",true);
+		for (i=0; i<suffix.length; i++)
+		{
+			if (suffix[i].spawn.indexOf("W") > -1)
+			{
+				document.SelectItem.Suffix.options[suffixIndex++] = new Option((suffix[i].cursed) ? suffix[i].name + " (c)": suffix[i].name,i);
+				if (previousS == document.SelectItem.Suffix.options[suffixIndex-1].text)
+				{
+					document.SelectItem.Suffix.options[suffixIndex-1].selected = true;
+				}
+			}
+		}
+	}
+	else if (iClass == "Bow")
+	{
+		//prefix
+		document.SelectItem.Prefix.options[0] = new Option("None","None",true);
+		for (i=0; i<prefix.length; i++)
+		{
+			if (prefix[i].spawn.indexOf("B") > -1)
+			{
+				document.SelectItem.Prefix.options[prefixIndex++] = new Option((prefix[i].cursed) ? prefix[i].name + " (c)": prefix[i].name,i);
+				if (previousP == document.SelectItem.Prefix.options[prefixIndex-1].text)
+				{
+					document.SelectItem.Prefix.options[prefixIndex-1].selected = true;
+				}
+			}
+		}
+
+		//base item
+		for (i=54; i<=61; i++)
+		{
+			document.SelectItem.Base.options[i-54] = new Option(baseEQ[i].name,i);
+		}
+
+		//suffix
+		document.SelectItem.Suffix.options[0] = new Option("None","None",true);
+		for (i=0; i<suffix.length; i++)
+		{
+			if (suffix[i].spawn.indexOf("B") > -1)
+			{
+				document.SelectItem.Suffix.options[suffixIndex++] = new Option((suffix[i].cursed) ? suffix[i].name + " (c)": suffix[i].name,i);
+				if (previousS == document.SelectItem.Suffix.options[suffixIndex-1].text)
+				{
+					document.SelectItem.Suffix.options[suffixIndex-1].selected = true;
+				}
+			}
+		}
+	}
+	else if (iClass == "Staff")
+	{
+		//prefix
+		document.SelectItem.Prefix.options[0] = new Option("None","None",true);
+		for (i=0; i<prefix.length; i++)
+		{
+			if (prefix[i].spawn.indexOf("T") > -1)
+			{
+				document.SelectItem.Prefix.options[prefixIndex++] = new Option((prefix[i].cursed) ? prefix[i].name + " (c)": prefix[i].name,i);
+				if (previousP == document.SelectItem.Prefix.options[prefixIndex-1].text)
+				{
+					document.SelectItem.Prefix.options[prefixIndex-1].selected = true;
+				}
+			}
+		}
+
+		//base item
+		for (i=62; i<=66; i++)
+		{
+			document.SelectItem.Base.options[i-62] = new Option(baseEQ[i].name,i);
+		}
+
+		//suffix
+		document.SelectItem.Suffix.options[0] = new Option("None","None",true);
+		for (i=0; i<suffix.length; i++)
+		{
+			if (suffix[i].spawn.indexOf("T") > -1)
+			{
+				document.SelectItem.Suffix.options[suffixIndex++] = new Option((suffix[i].cursed) ? suffix[i].name + " (c)": suffix[i].name,i);
+				if (previousS == document.SelectItem.Suffix.options[suffixIndex-1].text)
+				{
+					document.SelectItem.Suffix.options[suffixIndex-1].selected = true;
+				}
+			}
+		}
+		for (i=0; i<spell.length; i++)
+		{
+			if (spell[i].spawnStaff)
+			{
+				document.SelectItem.Suffix.options[suffixIndex++] = new Option(spell[i].name,i);
+			}
+		}
+	}
+	else if (iClass == "Jewelry")
+	{
+		//prefix
+		document.SelectItem.Prefix.options[0] = new Option("None","None",true);
+		for (i=0; i<prefix.length; i++)
+		{
+			if (prefix[i].spawn.indexOf("J") > -1)
+			{
+				document.SelectItem.Prefix.options[prefixIndex++] = new Option((prefix[i].cursed) ? prefix[i].name + " (c)": prefix[i].name,i);
+				if (previousP == document.SelectItem.Prefix.options[prefixIndex-1].text)
+				{
+					document.SelectItem.Prefix.options[prefixIndex-1].selected = true;
+				}
+			}
+		}
+
+		//base item
+		document.SelectItem.Base.options[0] = new Option("Ring",67,true);
+		document.SelectItem.Base.options[1] = new Option("Amulet",68);
+
+		//suffix
+		document.SelectItem.Suffix.options[0] = new Option("None","None",true);
+		for (i=0; i<suffix.length; i++)
+		{
+			if (suffix[i].spawn.indexOf("J") > -1)
+			{
+				document.SelectItem.Suffix.options[suffixIndex++] = new Option((suffix[i].cursed) ? suffix[i].name + " (c)": suffix[i].name,i);
+				if (previousS == document.SelectItem.Suffix.options[suffixIndex-1].text)
+				{
+					document.SelectItem.Suffix.options[suffixIndex-1].selected = true;
+				}
+			}
+		}
+	}
+	else if (iClass == "Unique")
+	{
+		//prefix
+		document.SelectItem.Prefix.options[0] = new Option(" "," ",true);
+		document.SelectItem.Prefix.options[1] = new Option("1234567890"," ");
+		document.SelectItem.Prefix.disabled = true;
+
+		//base item
+		for (i=0; i<unique.length; i++)
+		{
+			document.SelectItem.Base.options[i] = new Option(unique[i].name,unique[i].name);
+		}
+
+		//suffix
+		document.SelectItem.Suffix.options[0] = new Option(" "," ",true);
+		document.SelectItem.Suffix.options[1] = new Option("1234567890"," ");
+		document.SelectItem.Suffix.disabled = true;
+
+		//values
+		for (i=(document.SelectItem.Pvalue.options.length)-1; i>=0; i--)
+		{
+			document.SelectItem.Pvalue.options[i]=null;
+		}
+		for (i=(document.SelectItem.Svalue.options.length)-1; i>=0; i--)
+		{
+			document.SelectItem.Svalue.options[i]=null;
+		}
+		document.SelectItem.Pvalue.options[0] = new Option(" "," ",true);
+		document.SelectItem.Pvalue.options[1] = new Option("12345"," ");
+		document.SelectItem.Pvalue.disabled = true;
+		document.SelectItem.Svalue.options[0] = new Option(" "," ",true);
+		document.SelectItem.Svalue.options[1] = new Option("12345"," ");
+		document.SelectItem.Svalue.disabled = true;
+
+		//source
+		document.getElementById("Gris").style.color = "#C0C0C0";
+		document.SelectItem.Source[0].disabled = true;
+		document.getElementById("Wirt").style.color = "#C0C0C0";
+		document.SelectItem.Source[1].disabled = true;
+		document.getElementById("Sale").style.color = "#ffffff";
+		document.SelectItem.Source[2].disabled = false;
+		return;
+	}
+
+	//source
+	if (iClass == "Staff")
+	{
+		document.getElementById("Gris").firstChild.nodeValue = "Adria";
+	}
+	else
+	{
+		document.getElementById("Gris").firstChild.nodeValue = "Griswold";
+	}
+	document.getElementById("Sale").style.color = "#ffffff";
+	document.SelectItem.Source[2].disabled = false;
+	updatePrefix();
+	updateSuffix();
+}
+
+//change based on prefix
+function updatePrefix()
+{
+	var i;	var j;
+	var vRange;	var vBegin;
+	var prefixS = ((document.SelectItem.Prefix.options[document.SelectItem.Prefix.selectedIndex].value=="None")? "None": prefix[document.SelectItem.Prefix.options[document.SelectItem.Prefix.selectedIndex].value]);
+	var previousV = document.SelectItem.Pvalue.options[document.SelectItem.Pvalue.selectedIndex].text;
+
+	//clear current entries
+	for (i=(document.SelectItem.Pvalue.options.length)-1; i>=0; i--)
+	{
+		document.SelectItem.Pvalue.options[i]=null;
+	}
+	if (document.SelectItem.Prefix.options[document.SelectItem.Prefix.selectedIndex].text == "None")
+	{
+		document.SelectItem.Pvalue.disabled = true;
+		document.SelectItem.Pvalue.options[0] = new Option(" "," ",true);
+		document.SelectItem.Pvalue.options[1] = new Option("12345"," ");
+	}
+	else
+	{
+		document.SelectItem.Pvalue.disabled = false;
+
+		//create new entries
+		if (prefixS.range == 0)
+		{
+			document.SelectItem.Pvalue.options[0] = new Option(prefixS.value,prefix.base);
+		}
+		else
+		{
+			vBegin = parseInt(prefixS.value.substring(0,prefixS.value.indexOf("-")));
+			vRange = parseInt(prefixS.value.substring(prefixS.value.indexOf("-")+1,prefixS.value.indexOf(","))) - parseInt(prefixS.value.substring(0,prefixS.value.indexOf("-")));
+			for (i=0; i<=vRange; i++)
+			{
+				document.SelectItem.Pvalue.options[i] = new Option((prefixS.cursed? "-": "+")+(vBegin+i)+prefixS.value.substring(prefixS.value.indexOf(",")+1,prefixS.value.length),i);
+				if (previousV == document.SelectItem.Pvalue.options[i].text)
+				{
+					document.SelectItem.Pvalue.options[i].selected = true;
+				}
+			}
+		}
+	}
+
+	//grey out invalid suffixs
+	if (prefixS == "None")
+	{
+		if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Staff" || document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Jewelry")
+		{
+			document.SelectItem.Suffix.options[0].style.color = "#C0C0C0";
+			for (i=1; i<=document.SelectItem.Suffix.options.length-1; i++)
+			{
+				document.SelectItem.Suffix.options[i].style.color = "#000000";
+			}
+		}
+		else
+		{
+			for (i=0; i<=document.SelectItem.Suffix.options.length-1; i++)
+			{
+				document.SelectItem.Suffix.options[i].style.color = "#000000";
+			}
+		}
+	}
+	else
+	{
+		//rules for a staff	
+		if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Staff")
+		{
+			if (prefixS.name == "Plentiful" || prefixS.name == "Bountiful")
+			{
+				for (i=0; i<13; i++)
+				{
+					document.SelectItem.Suffix.options[i].style.color = "#C0C0C0";
+				}
+				for (i=13; i<=document.SelectItem.Suffix.options.length-1; i++)
+				{
+					document.SelectItem.Suffix.options[i].style.color = "#000000";
+				}
+			}
+			else
+			{
+				document.SelectItem.Suffix.options[0].style.color = "#000000";
+				for (i=1; i<13; i++)
+				{
+					var qlvlMin = ((prefixS.qlvl < suffix[document.SelectItem.Suffix.options[i].value].qlvl) ? prefixS.qlvl: suffix[document.SelectItem.Suffix.options[i].value].qlvl);
+					var qlvlMax = ((prefixS.qlvl >= suffix[document.SelectItem.Suffix.options[i].value].qlvl) ? prefixS.qlvl: suffix[document.SelectItem.Suffix.options[i].value].qlvl);
+					if (qlvlMax > 50)
+					{
+						qlvlMax=50;
+					}
+					if (qlvlMin < Math.floor(qlvlMax/2))
+					{
+						document.SelectItem.Suffix.options[i].style.color = "#C0C0C0";
+					}
+					else
+					{
+						document.SelectItem.Suffix.options[i].style.color = "#000000";
+					}
+				}
+			}
+		}
+		else //rules for a prefix and suffix
+		{
+			document.SelectItem.Suffix.options[0].style.color = "#000000";
+			for (i=1; i<=document.SelectItem.Suffix.options.length-1; i++)
+			{
+				var qlvlMin = ((prefixS.qlvl < suffix[document.SelectItem.Suffix.options[i].value].qlvl) ? prefixS.qlvl: suffix[document.SelectItem.Suffix.options[i].value].qlvl);
+				var qlvlMax = ((prefixS.qlvl >= suffix[document.SelectItem.Suffix.options[i].value].qlvl) ? prefixS.qlvl: suffix[document.SelectItem.Suffix.options[i].value].qlvl);
+				if (qlvlMax > 50)
+				{
+					qlvlMax=50;
+				}
+				if (qlvlMin < Math.floor(qlvlMax/2))
+				{
+					document.SelectItem.Suffix.options[i].style.color = "#C0C0C0";
+				}
+				else
+				{
+					document.SelectItem.Suffix.options[i].style.color = "#000000";
+				}
+
+				//check invalid affix combinations
+				for (j=0; j<24; j++)
+				{
+					if (prefixS.name == invalidCombo[j] && suffix[document.SelectItem.Suffix.options[i].value].name == invalidCombo[j+24])
+					{
+						document.SelectItem.Suffix.options[i].style.color = "#C0C0C0";
+					}
+				}
+			}
+		}
+	}
+	var Pcolor = document.SelectItem.Prefix.options[document.SelectItem.Prefix.options.selectedIndex].style.color;
+	for (i=0; i<document.SelectItem.Pvalue.options.length; i++)
+	{
+		document.SelectItem.Pvalue.options[i].style.color = Pcolor;
+	}
+	Pcolor = document.SelectItem.Suffix.options[document.SelectItem.Suffix.options.selectedIndex].style.color;
+	for (i=0; i<document.SelectItem.Svalue.options.length; i++)
+	{
+		document.SelectItem.Svalue.options[i].style.color = Pcolor;
+	}
+	if (document.SelectItem.Prefix.options[document.SelectItem.Prefix.options.selectedIndex].style.color != document.SelectItem.Class.options[0].style.color)
+	{
+		valid = false;
+	}
+	updateSource();
+}
+
+//change based on suffix
+function updateSuffix()
+{
+	var i;	var j;
+	var vRange;	var vBegin;
+	if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Staff" && document.SelectItem.Suffix.options.selectedIndex >= 13 && document.SelectItem.Suffix.options.selectedIndex > 0)
+	{
+		var suffixS = spell[document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].value];
+	}
+	else
+	{
+		var suffixS = ((document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].value=="None")? "None": suffix[document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].value]);
+	}
+	var previousV = document.SelectItem.Svalue.options[document.SelectItem.Svalue.selectedIndex].text;
+
+	//clear current entries
+	for (i=(document.SelectItem.Svalue.options.length)-1; i>=0; i--)
+	{
+		document.SelectItem.Svalue.options[i]=null;
+	}
+	if (document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].text == "None")
+	{
+		document.SelectItem.Svalue.disabled = true;
+		document.SelectItem.Svalue.options[0] = new Option(" "," ",true);
+		document.SelectItem.Svalue.options[1] = new Option("12345"," ");
+	}
+	else
+	{
+		document.SelectItem.Svalue.disabled = false;
+
+		//create new entries
+		if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Staff" && document.SelectItem.Suffix.options.selectedIndex >= 13)
+		{
+			vBegin = parseInt(suffixS.charges.substring(0,suffixS.charges.indexOf("-")));
+			vRange = parseInt(suffixS.charges.substring(suffixS.charges.indexOf("-")+1,suffixS.charges.length)) - parseInt(suffixS.charges.substring(0,suffixS.charges.indexOf("-")));
+			for (i=0; i<=vRange; i++)
+			{
+				document.SelectItem.Svalue.options[i] = new Option("+"+(vBegin+i)+" charges",vBegin+i);
+				if (previousV == document.SelectItem.Svalue.options[i].text)
+				{
+					document.SelectItem.Svalue.options[i].selected = true;
+				}
+			}
+		}
+		else
+		{
+			if (suffixS.range == 0)
+			{
+				document.SelectItem.Svalue.options[0] = new Option(suffixS.value,suffix.base);
+			}
+			else
+			{
+				vBegin = parseInt(suffixS.value.substring(0,suffixS.value.indexOf("-")));
+				vRange = parseInt(suffixS.value.substring(suffixS.value.indexOf("-")+1,suffixS.value.indexOf(","))) - parseInt(suffixS.value.substring(0,suffixS.value.indexOf("-")));
+				for (i=0; i<=vRange; i++)
+				{
+					if (suffixS.name == "Osmosis")
+					{
+						document.SelectItem.Svalue.options[i] = new Option("-"+(vBegin+i)+suffixS.value.substring(suffixS.value.indexOf(",")+1,suffixS.value.length),i);
+						if (previousV == document.SelectItem.Svalue.options[i].text)
+						{
+							document.SelectItem.Svalue.options[i].selected = true;
+						}
+					}
+					else
+					{
+						document.SelectItem.Svalue.options[i] = new Option((suffixS.cursed? "-": "+")+(vBegin+i)+suffixS.value.substring(suffixS.value.indexOf(",")+1,suffixS.value.length),i);
+						if (previousV == document.SelectItem.Svalue.options[i].text)
+						{
+							document.SelectItem.Svalue.options[i].selected = true;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	//gray out invalid prefixs
+	if (suffixS == "None")
+	{
+		if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Staff" || document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Jewelry")
+		{
+			document.SelectItem.Prefix.options[0].style.color = "#C0C0C0";
+			for (i=1; i<=document.SelectItem.Prefix.options.length-1; i++)
+			{
+				if (prefix[document.SelectItem.Prefix.options[i].value].name == "Bountiful" || prefix[document.SelectItem.Prefix.options[i].value].name == "Plentiful")
+				{
+					document.SelectItem.Prefix.options[i].style.color = "#C0C0C0";
+				}
+				else
+				{
+					document.SelectItem.Prefix.options[i].style.color = "#000000";
+				}
+			}
+		}
+		else
+		{
+			for (i=0; i<=document.SelectItem.Prefix.options.length-1; i++)
+			{
+				document.SelectItem.Prefix.options[i].style.color = "#000000";
+			}
+		}
+	}
+	else
+	{
+		//rules for a staff	
+		if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Staff")
+		{
+			if (document.SelectItem.Suffix.options.selectedIndex >= 13)
+			{
+				for (i=0; i<=document.SelectItem.Prefix.options.length-1; i++)
+				{
+					document.SelectItem.Prefix.options[i].style.color = "#000000";
+				}
+			}
+			else
+			{
+				document.SelectItem.Prefix.options[0].style.color = "#000000";
+				for (i=1; i<=document.SelectItem.Prefix.options.length-1; i++)
+				{
+					var qlvlMin = ((suffixS.qlvl < prefix[document.SelectItem.Prefix.options[i].value].qlvl) ? suffixS.qlvl: prefix[document.SelectItem.Prefix.options[i].value].qlvl);
+					var qlvlMax = ((suffixS.qlvl >= prefix[document.SelectItem.Prefix.options[i].value].qlvl) ? suffixS.qlvl: prefix[document.SelectItem.Prefix.options[i].value].qlvl);
+					if (qlvlMax > 50)
+					{
+						qlvlMax=50;
+					}
+					if (qlvlMin < Math.floor(qlvlMax/2) || prefix[document.SelectItem.Prefix.options[i].value].name == "Bountiful" || prefix[document.SelectItem.Prefix.options[i].value].name == "Plentiful")
+					{
+						document.SelectItem.Prefix.options[i].style.color = "#C0C0C0";
+					}
+					else
+					{
+						document.SelectItem.Prefix.options[i].style.color = "#000000";
+					}
+				}
+			}
+		}
+		else //rules for a prefix and suffix
+		{
+			document.SelectItem.Prefix.options[0].style.color = "#000000";
+			for (i=1; i<=document.SelectItem.Prefix.options.length-1; i++)
+			{
+				var qlvlMin = ((suffixS.qlvl < prefix[document.SelectItem.Prefix.options[i].value].qlvl) ? suffixS.qlvl: prefix[document.SelectItem.Prefix.options[i].value].qlvl);
+				var qlvlMax = ((suffixS.qlvl >= prefix[document.SelectItem.Prefix.options[i].value].qlvl) ? suffixS.qlvl: prefix[document.SelectItem.Prefix.options[i].value].qlvl);
+				if (qlvlMax > 50)
+				{
+					qlvlMax=50;
+				}
+				if (qlvlMin < Math.floor(qlvlMax/2) || prefix[document.SelectItem.Prefix.options[i].value].name == "Bountiful" || prefix[document.SelectItem.Prefix.options[i].value].name == "Plentiful")
+				{
+					document.SelectItem.Prefix.options[i].style.color = "#C0C0C0";
+				}
+				else
+				{
+					document.SelectItem.Prefix.options[i].style.color = "#000000";
+				}
+
+				//check invalid affix combinations
+				for (j=0; j<24; j++)
+				{
+					if (suffixS.name == invalidCombo[j] && suffix[document.SelectItem.Suffix.options[i].value].name == invalidCombo[j+24])
+					{
+						document.SelectItem.Suffix.options[i].style.color = "#C0C0C0";
+					}
+				}
+			}
+		}
+	}
+	var Pcolor = document.SelectItem.Prefix.options[document.SelectItem.Prefix.options.selectedIndex].style.color;
+	for (i=0; i<document.SelectItem.Pvalue.options.length; i++)
+	{
+		document.SelectItem.Pvalue.options[i].style.color = Pcolor;
+	}
+	Pcolor = document.SelectItem.Suffix.options[document.SelectItem.Suffix.options.selectedIndex].style.color;
+	for (i=0; i<document.SelectItem.Svalue.options.length; i++)
+	{
+		document.SelectItem.Svalue.options[i].style.color = Pcolor;
+	}
+	if (document.SelectItem.Suffix.options[document.SelectItem.Suffix.options.selectedIndex].style.color != document.SelectItem.Class.options[0].style.color)
+	{
+		valid = false;
+	}
+	updateSource();
+}
+
+//change based on base item
+function updateSource()
+{
+	if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text != "Unique")
+	{
+	var baseS = baseEQ[document.SelectItem.Base.options[document.SelectItem.Base.selectedIndex].value];
+	var prefixS = ((document.SelectItem.Prefix.options[document.SelectItem.Prefix.selectedIndex].value=="None")? "None": prefix[document.SelectItem.Prefix.options[document.SelectItem.Prefix.selectedIndex].value]);
+	if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Staff" && document.SelectItem.Suffix.options.selectedIndex >= 13 && document.SelectItem.Suffix.options.selectedIndex > 0)
+	{
+		var suffixS = spell[document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].value];
+	}
+	else
+	{
+		var suffixS = ((document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].value=="None")? "None": suffix[document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].value]);
+	}
+	document.getElementById("Gris").style.color = "#ffffff";
+	document.getElementById("Gris").style.fontStyle = "normal";
+	document.getElementById("Wirt").style.color = "#ffffff";
+	document.getElementById("Wirt").style.fontStyle = "normal";
+	document.SelectItem.Source[0].disabled = false;
+	document.SelectItem.Source[1].disabled = false;
+
+	//rules for the prefix
+	if (prefixS != "None" && document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text != "Staff")
+	{
+		if (prefixS.cursed)
+		{
+			document.getElementById("Gris").style.color = "#C0C0C0";
+			document.getElementById("Gris").style.fontStyle = "italic";
+			document.getElementById("Wirt").style.color = "#C0C0C0";
+			document.getElementById("Wirt").style.fontStyle = "italic";
+			document.SelectItem.Source[0].disabled = true;
+			document.SelectItem.Source[1].disabled = true;
+		}
+		if (prefixS.qlvl > 30)
+		{
+			document.getElementById("Gris").style.color = "#C0C0C0";
+			document.getElementById("Gris").style.fontStyle = "italic";
+			document.SelectItem.Source[0].disabled = true;
+		}
+		if (baseS.ilvl < Math.floor(prefixS.qlvl/4) || baseS.ilvl > prefixS.qlvl*2+1)
+		{
+			document.getElementById("Gris").style.color = "#C0C0C0";
+			document.getElementById("Gris").style.fontStyle = "italic";
+			document.SelectItem.Source[0].disabled = true;
+		}
+		if (baseS.ilvl > prefixS.qlvl)
+		{
+			document.getElementById("Wirt").style.color = "#C0C0C0";
+			document.getElementById("Wirt").style.fontStyle = "italic";
+			document.SelectItem.Source[1].disabled = true;
+		}
+	}
+
+	//rules for base item alone
+	if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Staff")
+	{
+		if (baseS.ilvl > 16)
+		{
+			document.getElementById("Gris").style.color = "#C0C0C0";
+			document.getElementById("Gris").style.fontStyle = "italic";
+			document.SelectItem.Source[0].disabled = true;
+		}
+		document.getElementById("Wirt").style.color = "#C0C0C0";
+		document.getElementById("Wirt").style.fontStyle = "italic";
+		document.SelectItem.Source[1].disabled = true;
+	}
+	else if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Jewelry")
+	{
+
+		document.getElementById("Gris").style.color = "#C0C0C0";
+		document.getElementById("Gris").style.fontStyle = "italic";
+		document.getElementById("Wirt").style.color = "#C0C0C0";
+		document.getElementById("Wirt").style.fontStyle = "italic";
+		document.SelectItem.Source[0].disabled = true;
+		document.SelectItem.Source[1].disabled = true;
+	}
+
+	//rules for the suffix
+	if (suffixS != "None" && document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text != "Staff")
+	{
+		if (suffixS.cursed)
+		{
+			document.getElementById("Gris").style.color = "#C0C0C0";
+			document.getElementById("Gris").style.fontStyle = "italic";
+			document.getElementById("Wirt").style.color = "#C0C0C0";
+			document.getElementById("Wirt").style.fontStyle = "italic";
+			document.SelectItem.Source[0].disabled = true;
+			document.SelectItem.Source[1].disabled = true;
+		}
+		if (suffixS.qlvl > 30)
+		{
+			document.getElementById("Gris").style.color = "#C0C0C0";
+			document.getElementById("Gris").style.fontStyle = "italic";
+			document.SelectItem.Source[0].disabled = true;
+		}
+		if (baseS.ilvl < Math.floor(suffixS.qlvl/4) || baseS.ilvl > suffixS.qlvl*2+1)
+		{
+			document.getElementById("Gris").style.color = "#C0C0C0";
+			document.getElementById("Gris").style.fontStyle = "italic";
+			document.SelectItem.Source[0].disabled = true;
+		}
+		if (baseS.ilvl > suffixS.qlvl)
+		{
+			document.getElementById("Wirt").style.color = "#C0C0C0";
+			document.getElementById("Wirt").style.fontStyle = "italic";
+			document.SelectItem.Source[1].disabled = true;
+		}
+	}
+
+	//rules if prefix and suffix are none
+	if (prefixS == "None" && suffixS == "None")
+	{
+		document.getElementById("Wirt").style.color = "#C0C0C0";
+		document.getElementById("Wirt").style.fontStyle = "italic";
+		document.SelectItem.Source[1].disabled = true;
+		if (baseS.ilvl > 16)
+		{
+			document.getElementById("Gris").style.color = "#C0C0C0";
+			document.getElementById("Gris").style.fontStyle = "italic";
+			document.SelectItem.Source[0].disabled = true;
+		}
+	}
+	}
+
+	//change checked
+	/*for (i=0; i<=2; i++)
+	{
+		if (document.SelectItem.Source[i].disabled)
+		{
+			document.SelectItem.Source[i].checked = false;
+		}
+	}
+
+	if (document.SelectItem.Source[0].disabled && document.SelectItem.Source[0].checked)
+	{
+		document.SelectItem.Source[0].checked = false;
+		document.SelectItem.Source[1].checked = true;
+	}
+	if (document.SelectItem.Source[1].disabled && document.SelectItem.Source[1].checked)
+	{
+		document.SelectItem.Source[1].checked = false;
+		document.SelectItem.Source[2].checked = true;
+	}*/
+}
+
+//reset web form
+function reset()
+{
+	var i
+
+	//clear current entries
+	for (i=(document.SelectItem.Class.options.length)-1; i>=0; i--)
+	{
+		document.SelectItem.Class.options[i]=null;
+	}
+	for (i=(document.SelectItem.Prefix.options.length)-1; i>=0; i--)
+	{
+		document.SelectItem.Prefix.options[i]=null;
+	}
+	for (i=(document.SelectItem.Base.options.length)-1; i>=0; i--)
+	{
+		document.SelectItem.Base.options[i]=null;
+	}	
+	for (i=(document.SelectItem.Suffix.options.length)-1; i>=0; i--)
+	{
+		document.SelectItem.Suffix.options[i]=null;
+	}
+	for (i=(document.SelectItem.Pvalue.options.length)-1; i>=0; i--)
+	{
+		document.SelectItem.Pvalue.options[i]=null;
+	}
+	for (i=(document.SelectItem.Svalue.options.length)-1; i>=0; i--)
+	{
+		document.SelectItem.Svalue.options[i]=null;
+	}
+
+	//create new entries
+	document.SelectItem.Class.options[0] = new Option("Select this first","invalid",true);
+	document.SelectItem.Class.options[1] = new Option("Helm","Helm");
+	document.SelectItem.Class.options[2] = new Option("Armor","Armor");
+	document.SelectItem.Class.options[3] = new Option("Shield","Shield");
+	document.SelectItem.Class.options[4] = new Option("Sword","Sword");
+	document.SelectItem.Class.options[5] = new Option("Axe","Axe");
+	document.SelectItem.Class.options[6] = new Option("Club","Club");
+	document.SelectItem.Class.options[7] = new Option("Bow","Bow");
+	document.SelectItem.Class.options[8] = new Option("Staff","Staff");
+	document.SelectItem.Class.options[9] = new Option("Jewelry","Jewelry");
+	document.SelectItem.Class.options[10] = new Option("Unique","Unique");
+
+	document.SelectItem.Prefix.options[0] = new Option(" "," ",true);
+	document.SelectItem.Prefix.options[1] = new Option("1234567890"," ");
+	document.SelectItem.Prefix.disabled = true;
+	document.SelectItem.Base.options[0] = new Option(" "," ",true);
+	document.SelectItem.Base.options[1] = new Option("Select this first"," ");
+	document.SelectItem.Base.disabled = true;
+	document.SelectItem.Suffix.options[0] = new Option(" "," ",true);
+	document.SelectItem.Suffix.options[1] = new Option("1234567890"," ");
+	document.SelectItem.Suffix.disabled = true;
+	document.SelectItem.Pvalue.options[0] = new Option(" "," ",true);
+	document.SelectItem.Pvalue.options[1] = new Option("12345"," ");
+	document.SelectItem.Pvalue.disabled = true;
+	document.SelectItem.Svalue.options[0] = new Option(" "," ",true);
+	document.SelectItem.Svalue.options[1] = new Option("12345"," ");
+	document.SelectItem.Svalue.disabled = true;
+
+	document.getElementById("Gris").style.color = "#ffffff";
+	document.SelectItem.Source[0].disabled = false;
+	document.SelectItem.Source[0].checked = true;
+	document.getElementById("Wirt").style.color = "#ffffff";
+	document.SelectItem.Source[1].disabled = false;
+	document.getElementById("Sale").style.color = "#ffffff";
+	document.SelectItem.Source[2].disabled = false;
+	document.getElementById("Gris").firstChild.nodeValue = "Griswold";
+	document.getElementById("Price").firstChild.nodeValue = "0";
+}
+
+//////////////////////
+//BEGIN PRICE FUNCTION
+//////////////////////
+
+//verify valid item
+function validate()
+{
+	var prefixS = ((document.SelectItem.Prefix.options[document.SelectItem.Prefix.selectedIndex].value=="None")? "None": prefix[document.SelectItem.Prefix.options[document.SelectItem.Prefix.selectedIndex].value]);
+	var baseS = baseEQ[document.SelectItem.Base.options[document.SelectItem.Base.selectedIndex].value];
+	if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Staff" && document.SelectItem.Suffix.options.selectedIndex >= 13 && document.SelectItem.Suffix.options.selectedIndex > 0)
+	{
+		var suffixS = spell[document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].value];
+	}
+	else
+	{
+		var suffixS = ((document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].value=="None")? "None": suffix[document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].value]);
+	}
+
+	//if item selected
+	if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Select this first")
+	{
+		return false;
+	}
+
+	//rules for a unique
+	if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Unique")
+	{
+		return true;
+	}
+
+	//rules for a staff	
+	if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Staff")
+	{
+		if (prefixS == "None" && suffixS == "None")
+		{
+			return false;
+		}
+		if (prefixS != "None")
+		{
+			if ((prefixS.name == "Plentiful" || prefixS.name == "Bountiful") && document.SelectItem.Suffix.selectedIndex < 13)
+			{
+				return false;
+			}
+		}
+		if (prefixS !="None" && document.SelectItem.Suffix.selectedIndex >= 1 && document.SelectItem.Suffix.selectedIndex < 13)
+		{
+			var qlvlMin = ((prefixS.qlvl < suffixS.qlvl) ? prefixS.qlvl: suffixS.qlvl);
+			var qlvlMax = ((prefixS.qlvl >= suffixS.qlvl) ? prefixS.qlvl: suffixS.qlvl);
+			if (qlvlMin < Math.floor(qlvlMax/2) || qlvlMax > 34)
+			{
+				return false;
+			}		
+		}
+	}
+
+	//rules for jewelry
+	else if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Jewelry")
+	{
+		if (prefixS == "None" && suffixS == "None")
+		{
+			return false;
+		}
+	}
+
+	//rules for both prefix and suffix
+	else if (prefixS != "None" && suffixS != "None")
+	{
+		var qlvlMin = ((prefixS.qlvl < suffixS.qlvl) ? prefixS.qlvl: suffixS.qlvl);
+		var qlvlMax = ((prefixS.qlvl >= suffixS.qlvl) ? prefixS.qlvl: suffixS.qlvl);
+		if (qlvlMax >= 50)
+		{
+			qlvlMax = 50;
+		}
+
+		if (qlvlMin < Math.floor(qlvlMax/2))
+		{
+			return false;
+		}
+
+		//check invalid affix combinations
+		for (i=0; i<24; i++)
+		{
+			if (prefixS.name == invalidCombo[i] && suffixS.name == invalidCombo[i+24])
+			{
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+//calculate price
+function calcPrice()
+{
+	//check for valid item
+	if (!validate())
+	{
+		document.getElementById("Price").firstChild.nodeValue = "0";
+		return;
+	}
+
+	var prefixS = ((document.SelectItem.Prefix.options[document.SelectItem.Prefix.selectedIndex].value=="None")? "None": prefix[document.SelectItem.Prefix.options[document.SelectItem.Prefix.selectedIndex].value]);
+	var baseS = baseEQ[document.SelectItem.Base.options[document.SelectItem.Base.selectedIndex].value];
+	if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Staff" && document.SelectItem.Suffix.options.selectedIndex >= 13 && document.SelectItem.Suffix.options.selectedIndex > 0)
+	{
+		var suffixS = spell[document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].value];
+	}
+	else
+	{
+		var suffixS = ((document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].value=="None")? "None": suffix[document.SelectItem.Suffix.options[document.SelectItem.Suffix.selectedIndex].value]);
+	}
+
+	//define variables
+	var price;
+	var Bp=0;
+	var Bs=0;
+	var Qp=0;
+	var Qs=0;
+	var I=0;
+	var H=0;
+	var P=0;
+	var Mp=0;
+	var Ms=0;
+
+	//calculate price
+	if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Unique")
+	{
+		price = unique[document.SelectItem.Base.selectedIndex].price;
+	}
+	else if (document.SelectItem.Class.options[document.SelectItem.Class.selectedIndex].text == "Staff" && document.SelectItem.Suffix.options.selectedIndex >= 13)
+	{
+		I = baseS.price;
+		H = parseInt(suffixS.charges.substring(0,suffixS.charges.indexOf("-"))) + document.SelectItem.Svalue.selectedIndex;
+		P = suffixS.P;
+
+		if (prefixS != "None")
+		{
+			Bp = prefixS.B;
+			Mp = prefixS.M;
+			if (prefixS.range != 0)
+			{
+				Qp = Math.floor(Math.floor(document.SelectItem.Pvalue.selectedIndex/(document.SelectItem.Pvalue.options.length-1)*100)/100*prefixS.range);
+			}
+			else
+			{
+				Qp = 0;
+			}
+		}
+		if (Mp >= 0)
+		{
+			price = Bp + Qp + (I + H*P)*Mp;
+		}
+		else if (Mp < 0)
+		{
+			price = Bp + Qp + (I + H*P)/Mp;
+		}
+		
+		if (price < 1)
+		{
+			price = 1;
+		}
+	}
+	else
+	{
+		I = baseS.price;
+		if (prefixS != "None")
+		{
+			Bp = prefixS.B;
+			Mp = prefixS.M;
+			if (prefixS.range != 0)
+			{
+				Qp = Math.floor(Math.floor(document.SelectItem.Pvalue.selectedIndex/(document.SelectItem.Pvalue.options.length-1)*100)/100*prefixS.range);
+			}
+			else
+			{
+				Qp = 0;
+			}
+		}
+		if (suffixS != "None")
+		{
+			Bs = suffixS.B;
+			Ms = suffixS.M;
+			if (suffixS.range != 0)
+			{
+				Qs = Math.floor(Math.floor(document.SelectItem.Svalue.selectedIndex/(document.SelectItem.Svalue.options.length-1)*100)/100*suffixS.range);
+			}
+			else
+			{
+				Qs = 0;
+			}
+		}
+
+		if (Mp+Ms == 0)
+		{
+			price = I;
+		}
+		else if (Mp+Ms > 0)
+		{
+			price = Bp + Bs + Qp + Qs + I*(Mp + Ms);
+		}
+		else if (Mp+Ms < 0)
+		{
+			price = Bp + Bs + Qp + Qs + I/(Mp + Ms);
+		}
+
+		if (price < 1)
+		{
+			price = 1;
+		}
+	}
+
+	//modify for source
+	for (i=0; i<=2; i++)
+	{
+		if (document.SelectItem.Source[i].checked == true && document.SelectItem.Source[i].disabled == true)
+		{
+			document.getElementById("Price").firstChild.nodeValue = "0";
+			return;
+		}
+	}
+
+	if (document.SelectItem.Source[0].checked == true)
+	{
+		if (price > 140000)
+		{
+			document.getElementById("Price").firstChild.nodeValue = "This item is too expensive to buy";
+			return;
+		}
+		price = Math.floor(price);
+	}
+	else if (document.SelectItem.Source[1].checked == true)
+	{
+		if (price > 90000)
+		{
+			document.getElementById("Price").firstChild.nodeValue = "This item is too expensive to buy";
+			return;
+		}
+		price = Math.floor(price*1.5);
+	}
+	else if (document.SelectItem.Source[2].checked == true)
+	{
+		price = Math.floor(price/4);
+		if (price < 1)
+		{
+			price = 1;
+		}
+	}
+	else
+	{
+		document.getElementById("Price").firstChild.nodeValue = "Please choose source";
+		return;
+	}
+	document.getElementById("Price").firstChild.nodeValue = ""+price;
+	return;
+}
+
+</script>
+</head>
+<body bgcolor="#292421">
+
+
+<p>
+
+</p>
+
+<form Name="SelectItem">
+
+<table width="10" cellspacing="0" cellpadding="0" bordercolor="#fcfff0" border="2" align="center">
+  <tr>
+    <td width="15" height="15" rowspan="2" colspan="2"> </td>
+    <td width="100%" height="5"> </td>
+    <td width="15" height="15" rowspan="2" colspan="2"> </td>
+  </tr>
+  <tr>
+    <td width="100%" height="10" class="topBorder"><h1 class="Title">Item Price Calculator</h1></td>
+
+  </tr>
+  <tr>
+    <td width="5"> </td>
+    <td width="10" class="leftBorder"> </td>
+    <td width="100%" class="cell">
+
+<table border="0" cellpadding="8" cellspacing="0"><tr><td>
+	<table border="0" cellpadding="0" cellspacing="0" align="center">
+	<tr>
+
+		<td> </td>
+		<td colspan="3" align="center">
+		<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+			<a class="Label">Item Class:</a><br>
+			<select name="Class" onChange="updateClass();calcPrice();">
+			</select>
+		</td></tr></table>
+		</td>
+
+		<td> </td>
+	</tr>
+	<tr>
+		<td width="100%" height="10" colspan="5"></td>
+	</tr>
+	<tr>
+		<td align="right">
+		<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+
+			<a class="label">Prefix:</a><br>
+			<select name="Prefix" DISABLED onChange="updatePrefix();calcPrice();">
+			</select>
+		</td></tr></table>
+		</td>
+		<td width="5"><table border="0" cellpadding="0" cellspacing="0" width="10"><tr><td></td></tr></table></td>
+		<td align="center">
+		<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+
+			<a class="label">Base Item:</a><br>
+			<select name="Base" DISABLED onChange="updateSource();calcPrice();">
+			</select>
+		</td></tr></table>
+		</td>
+		<td width="5"><table border="0" cellpadding="0" cellspacing="0" width="10"><tr><td></td></tr></table></td>
+		<td align="left">
+		<table border="0" cellpadding="0" cellspacing="0">
+
+		<tr>
+		  <td rowspan="2">
+			<a class="label">Suffix:</a><br>
+			<select name="Suffix" DISABLED onChange="updateSuffix();calcPrice();">
+			</select>
+		  </td></a></tr></table>
+		</td>
+	</tr>
+
+	<tr>
+		<td width="100%" height="10" colspan="5"></td>
+	</tr>
+	<tr>
+		<td align="right" valign="top">
+		<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+			<a class="label">Value:</a><br>
+			<select name="Pvalue" DISABLED onChange="calcPrice();">
+
+			</select>
+		</td></tr></table>
+		</td>
+		<td width="5"><table border="0" cellpadding="0" cellspacing="0" width="10"><tr><td></td></tr></table></td>
+		<td align="center" class="label">
+			<input name="Source" type="radio" class="radio" value="Gris" onClick="calcPrice();" CHECKED><a ID="Gris" STYLE="font-style: normal">Griswold</a><br>
+			<input name="Source" type="radio" class="radio" value="Wirt" onClick="calcPrice();"><a ID="Wirt" STYLE="font-style: normal">Wirt</a><br>
+			<input name="Source" type="radio" class="radio" value="Sale" onClick="calcPrice();"><a ID="Sale" STYLE="font-style: normal">Resale</a>
+
+		</td>
+		<td width="5"><table border="0" cellpadding="0" cellspacing="0" width="10"><tr><td></td></tr></table></td>
+		<td align="left" valign="top">
+		<table border="0" cellpadding="0" cellspacing="0"><tr><td>
+			<a class="label">Value:</a><br>
+			<select name="Svalue" DISABLED onChange="calcPrice();">
+			</select>
+		</td></tr></table>
+
+		</td>
+	</tr>
+	<tr>
+		<td width="100%" height="15" colspan="5"></td>
+	</tr>
+	<tr>
+		<td align="left" colspan="5">
+			<a class="label">Price:</a>
+
+			<a name="Price" ID="Price">0</a> Gold
+		</td>
+	</tr>
+	</table>
+</table>
+
+    </td>
+    <td width="10" class="rightBorder"></td>
+    <td width="5"></td>
+
+  </tr>
+  <tr>
+    <td width="15" height="15" rowspan="2" colspan="2"> </td>
+    <td width="100%" height="10" class="botBorder"> </td>
+    <td width="15" height="15" rowspan="2" colspan="2"> </td>
+  </tr>
+  <tr>
+    <td width="100%" height="5"> </td>
+
+  </tr>
+</table>
+</form>
+<script language="Javascript" type="text/javascript">
+reset();
+</script>
+<br>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table>
+</body>
+</html>
