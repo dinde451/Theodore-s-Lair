@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Ghast's Grotto - Tristram</title>
+<meta name="description" content="Zoom and scroll through a pixel perfect image of Tristram.">
+<meta name="keywords" content="Diablo, Diablo 1, Diablo One, ghast, ghastmaster, ghast's grotto, shrine list, multiplayer">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+<script src="js/wheelzoom.js"></script>
+<style>
+img {
+    image-rendering: pixelated;
+}
+.hand {
+    cursor: -webkit-grab;
+    cursor: grab;
+}
+.hand2 {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+}
+.norm {
+    color: #ffffff;
+}
+.cpixel {
+    image-rendering: auto;
+}
+.flip {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+table.blog {
+    background-color: #111111;
+    padding: .3em;
+    color: #bca86c;
+}
+.title {
+    font-size: 1.5em;
+    text-align: left;
+    color: #ffffff;
+}
+.date {
+    text-align: right;
+    color: #bca86c;
+}
+a:link {
+    text-decoration: none;
+    color: #ffffff
+}
+a:link {
+    text-decoration: none;
+    color: #ffffff;
+}
+a:visited {
+    text-decoration: none;
+    color: #ffffff;
+}
+a:hover {
+    background: none;
+    color: #ff8000;
+}
+.banner {
+    margin: 0;
+    font-size: 1em;
+    font-weight: none;
+    line-height: 1.1;
+    text-align: left;
+    position: fixed;
+    top: 2em;
+    left: 0em;
+    width: 10%;
+    right: auto;
+}
+.banner p {
+    margin: 0; 
+    padding: 0.3em 0.4em;
+    border: none;
+    color: #ff8000;
+}
+.banner a, div.banner em {
+    display: block; margin: 0 0.5em;
+}
+.banner a, div.banner em {
+    border-top: 0px groove #CCC;
+}
+.banner a:first-child {
+    border-top: none;
+}
+.banner em {
+    color: #CFC;
+}
+.banner2 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: none;
+    line-height: 1.1;
+    text-align: left;
+    position: fixed;
+    top: 2em;
+    left: auto;
+    width: 10%;
+    right: 0em;
+}
+.banner2 p {
+    margin: 0; 
+    padding: 0.3em 0.4em;
+    border: none;
+    color: #ff8000;
+}
+.banner2 a, div.banner em {
+    display: block;
+    margin: 0 0.5em;
+}
+.banner2 a, div.banner em {
+    border-top: 0px groove #CCC;
+}
+.banner2 a:first-child {
+    border-top: none;
+}
+.banner2 em {
+    color: #CFC;
+}
+.banner2 span {
+    margin: 0 0.5em;
+}
+button {
+    background-color: #111111;
+    color: #ffffff;
+}
+</style>
+<script> 
+function reset() {
+    var img = document.getElementById('image');
+    img.src='images/town.webp';
+    img.classList.remove('flip');
+    return false;
+}
+function cpixel() {
+    var element = document.getElementById('image');
+    element.classList.toggle('cpixel');
+}
+function cursor() {
+    var div = document.getElementById('image');
+    div.classList.remove('hand');
+    div.classList.add('hand2');
+}
+function cursor2() {
+    var div = document.getElementById('image');
+    div.classList.remove('hand2');
+    div.classList.add('hand');
+}
+function flip() {
+    var element = document.getElementById('image');
+    element.classList.toggle('flip');
+}
+</script>
+</head>
+<body bgcolor="#2d2d2d">
+<div class="banner">
+    <p>Grotto:
+    <br>
+    <br>
+    <a title="Tips, tricks, news, and more!" href="index.html">Home</a>
+    <br>
+    <a title="Various Diablo Stat Calculators" href="calcs.html">Calcs</a>
+    <br>
+    <a title="Self explanatory" href="shrinelist.html">Shrines</a>
+    <br>
+    <a title="Zoom and scroll through a pixel perfect image of Tristram" href="tristram.html">Tristram</a>
+    <br>
+    <a title="A list of all the uniques" href="uniques.html">Uniques</a>
+    <br>
+    <a title="A huge list of oldies(but goodies) and newby Diablo related sites and forums" href="links.html">Links</a>
+    <br>
+    </p>
+    <p>Monsters:
+    <br>
+    <br>
+    <a title="A list of all the normal monsters" href="monstern.html">Normal</a>
+    <br>
+    <a title="A list of all the unique monsters" href="monsteru.html">Unique</a>
+    <br>
+    </p>
+    <p>Builds:
+    <br>
+    <br>
+    <a title="FireIceTalon's Builds for Rogue" href="buildr.html">Rogue</a>
+    <br>
+    <a title="FireIceTalon's Builds for Sorcerer" href="builds.html">Sorcerer</a>
+    <br>
+    <a title="FireIceTalon's Builds for Warrior" href="buildw.html">Warrior</a>
+    <br>
+    </p>
+    <p>My:
+    <br>
+    <br>
+    <a title="My characters and their items" href="characters.html">Characters</a>
+    <br>
+    <a title="From the bean counter" href="kills.html">Kills</a>
+    <br>
+    <a title="My stash of items" href="stash.html">Stash</a>
+    <br>
+    <a title="All the items I am hunting" href="wishlist.html">Wishlist</a>
+    </p>
+</div>
+<div class="banner2">
+    <p> Image:
+    <br>
+    <br>
+        <button onclick="reset()">Reset</button>
+    <br>
+    <br>
+        <button onclick="flip()">Flip</button>
+    <br>
+    <br>
+    </p>
+    <p> Toggle:
+    <br>
+    <br>
+        <button onclick="cpixel()">Renderer</button>
+    <br>
+</div>
+<center>
+<table class="blog" width="80%">
+    <tr>
+        <td class="title">Tristram</td>
+        <td class="date">Zoom & Pan</td>
+    </tr>
+    <tr>
+        <td colspan="2"><img id="image" class="town hand" src="images/town.webp" width="100%" onmousedown="cursor()" onmouseup="cursor2()"/></td>
+    </tr>
+    <tr>
+        <td><i><br>Download Image: <a href="images/town.webp" download="tristram">2.3MB (6144x3071)</a></i></td>
+    </tr>
+</table>
+<script>
+    wheelzoom(document.querySelector('img.town'));
+</script>
+<br><br>
+<table width="80%">
+    <tr>
+        <td style="text-align: center;">
+        <span class="norm">Diablo&reg; - &copy;1996 Blizzard Entertainment, Inc. All rights reserved. Diablo and Blizzard Entertainment are trademarks or registered trademarks of Blizzard Entertainment, Inc. in the U.S. and/or other countries.</span></td>
+    </tr>
+</table>
+</center>
+</body>
+</html>
