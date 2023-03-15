@@ -1,0 +1,13 @@
+HTTrack3.49-2+htsswf+htsjava launched on Wed, 15 Mar 2023 18:46:16 at https://wheybags.gitlab.io/jarulfs-guide/ +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://wheybags.gitlab.io/jarulfs-guide/ -O1 "C:\My Web Sites\jarrufle" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+18:46:17	Warning: 	Found for https://wheybags.gitlab.io/robots.txt
+18:46:17	Warning: 	File has moved from https://wheybags.gitlab.io/robots.txt to https://projects.gitlab.io/auth?domain=https://wheybags.gitlab.io&state=AxKKK7hCyquhuQIFA4Rl5A==
+
+HTTrack Website Copier/3.49-2 mirror complete in 3 seconds : 3 links scanned, 2 files written (801360 bytes overall) [803015 bytes received at 267671 bytes/sec]
+(No errors, 2 warnings, 0 messages)
