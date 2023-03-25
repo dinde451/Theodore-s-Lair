@@ -64,3 +64,9 @@ body{margin:0;padding:0;background:#000000;font-size:0.875rem;line-height:1.5em;
       float: none;
     }
   } 
+
+   {
+    font-family: 'CustomFont', Exocet, sans-serif;
+    font-weight:normal;
+    font-style:normal;
+    }
