@@ -20,3 +20,5 @@ If you need help or just want to trade item or play with other you can go on our
 Theodore's lair is built using DevilutionX a great mod for Diablo 1 and Hellfire you can download it by this link: https://github.com/diasurgical/devilutionX
 Also we use the Zerotier server of DevilutionX so sometimes there is somme little bug or lag.
 The expansion pack is at it start so if you want to help us just pull a request to ask the files of our mod and we will mabey send it to you so you can help us with our mod.
+
+https://github.com/MarsmoucheStudio/DiabloTL
