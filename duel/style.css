@@ -70,3 +70,23 @@ body{margin:0;padding:0;background:#000000;font-size:0.875rem;line-height:1.5em;
     font-weight:normal;
     font-style:normal;
     }
+
+table, caption, th, td {
+    border-collapse: collapse;
+}
+
+caption, th, td {
+    padding: 8px;
+}
+
+caption {
+    background-color: grey;
+}
+
+th {
+    background-color: darkslategray;
+}
+
+td {
+    background-color: slategrey;
+}
