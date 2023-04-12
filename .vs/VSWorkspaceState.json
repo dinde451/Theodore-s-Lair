@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\chatroom",
+    "\\chatroom\\C1"
   ],
+  "SelectedNode": "\\chatroom\\C1\\chatroom.html",
   "PreviewInSolutionExplorer": false
 }
