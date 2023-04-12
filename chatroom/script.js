@@ -107,9 +107,10 @@ function createMemberElement(member) {
 
 function updateMembersDOM() {
   DOM.membersCount.innerText = `${members.length} users in room:`;
-  DOM.membersList.innerHTML = '';
+  DOM.membersList.innerHTML = 'Adventurer at Tristram:';
   members.forEach(member =>
     DOM.membersList.appendChild(createMemberElement(member))
+
   );
 }
 
@@ -129,3 +130,4 @@ function addMessageToListDOM(text, member) {
     el.scrollTop = el.scrollHeight - el.clientHeight;
   }
 }
+
