@@ -90,3 +90,7 @@ th {
 td {
     background-color: slategrey;
 }
+
+th, td {
+    padding: 15px;
+}
