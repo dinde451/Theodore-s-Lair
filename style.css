@@ -106,3 +106,41 @@ iframe {
 .closebtn:hover {
   color: black;
 } 
+ /* Callout box - fixed position at the bottom of the page */
+.callout {
+  position: fixed;
+  bottom: 35px;
+  right: 20px;
+  margin-left: 20px;
+  max-width: 300px;
+}
+
+/* Callout header */
+.callout-header {
+  padding: 25px 15px;
+  background: #555;
+  font-size: 30px;
+  color: white;
+}
+
+/* Callout container/body */
+.callout-container {
+  padding: 15px;
+  background-color: #ccc;
+  color: black
+}
+
+/* Close button */
+.closebtn {
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Change color on mouse-over */
+.closebtn:hover {
+  color: lightgrey;
+} 
