@@ -1,0 +1,401 @@
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+<script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
+<script src="js/unitip.js" type="text/javascript"></script>
+<script src="js/magitip.js" type="text/javascript"></script>
+<script src="js/whitip.js" type="text/javascript"></script>
+<style>
+a:link {
+    text-decoration: none;
+    color: #ffffff
+}
+a:visited {
+    text-decoration: none;
+    color: #ffffff
+}
+a:hover {
+    background: none;
+    color: #ff8000
+}
+.banner {
+    margin: 0;
+    font-size: 1em;
+    font-weight: none;
+    line-height: 1.1;
+    text-align: left;
+    position: fixed;
+    top: 2em;
+    left: 0em;
+    width: 10%;
+    right: auto;
+}
+.banner p {
+    margin: 0; 
+    padding: 0.3em 0.4em;
+    border: none;
+    color: #ff8000;
+}
+.banner a, div.banner em {
+    display: block; margin: 0 0.5em;
+}
+.banner a, div.banner em {
+    border-top: 0px groove #CCC;
+}
+.banner a:first-child {
+    border-top: none;
+}
+.banner em {
+    color: #CFC;
+}
+.banner2 {
+    margin: 0;
+    font-size: 1em;
+    font-weight: none;
+    line-height: 1.1;
+    text-align: left;
+    position: fixed;
+    top: 2em;
+    left: auto;
+    width: 10%;
+    right: 0em;
+}
+.banner2 p {
+    margin: 0; 
+    padding: 0.3em 0.4em;
+    border: none;
+    color: #ff8000;
+}
+.banner2 a, div.banner em {
+    display: block;
+    margin: 0 0.5em;
+}
+.banner2 a, div.banner em {
+    border-top: 0px groove #CCC;
+}
+.banner2 a:first-child {
+    border-top: none;
+}
+.banner2 em {
+    color: #CFC;
+}
+#unitip {
+    position:absolute;
+    display:none;
+    background:#111111;
+    border-width: 2px;
+    padding: 3px;
+    border-style: groove;
+    border-color: #bca86c;
+    color: #bca86c;
+}
+#magitip {
+    position:absolute;
+    display:none;
+    background:#111111;
+    border-width: 2px;
+    padding: 3px;
+    border-style: groove;
+    border-color: #a0a5c8;
+    color: #a0a5c8;
+}
+#whitip {
+    position:absolute;
+    display:none;
+    background:#111111;
+    border-width: 2px;
+    padding: 3px;
+    border-style: groove;
+    border-color: #ffffff;
+    color: #ffffff;
+}
+.title {
+    font-size: 1.5em;
+    text-align: left;
+    color: #ffffff;
+}
+img {
+    image-rendering: pixelated;
+}
+.fire {
+    color: #e16c6c;
+}
+.magic {
+    color: #a0a5c8;
+}
+.norm {
+    color: #ffffff;
+}
+.unique {
+    color: #bca86c;
+}
+.blog {
+    background-color: #111111;
+    color: #ffffff;
+    padding: .3em;
+    max-width: 640px;
+    display: block;
+}
+.descrip {
+    color: #bca86c;
+    text-align: left;
+}
+.statsimage {
+    position: relative;
+    font-size: .85em;
+}
+.items div {
+    position: absolute;
+    box-shadow: 0px 0px 50px hsl(0, 30%, 20%) inset;
+}
+.items div:hover {
+    outline: 1px solid #a0a5c8;
+    box-shadow: 0px 0px 50px hsl(240, 30%, 30%) inset;
+}
+.stats div {
+    position: absolute;
+    text-align: center;
+}
+.lefta {
+    left: 94px;
+    height: 17px;
+    width: 35px;
+}
+.leftb {
+    left: 141px;
+    height: 17px;
+    width: 35px;
+}
+.right {
+    left: 256px;
+    height: 16px;
+    width: 47px;
+}
+.name {
+    top: 19px;
+    left: 20px;
+    height: 16px;
+    width: 136px;
+}
+.level {
+    top: 57px;
+    left: 78px;
+    height: 16px;
+    width: 17px;
+}
+.class {
+    top: 19px;
+    left: 165px;
+    height: 16px;
+    width: 136px;
+}
+.experience {
+    top: 57px;
+    left: 215px;
+    height: 16px;
+    width: 89px;
+}
+.next {
+    top: 85px;
+    left: 215px;
+    height: 16px;
+    width: 89px;
+}
+.str {
+    top: 142px;
+}
+.mag {
+    top: 170px;
+}
+.dex {
+    top: 198px;
+}
+.vit {
+    top: 226px;
+}
+.life {
+    top: 291px;
+}
+.mana {
+    top: 319px;
+}
+.ac {
+    top: 170px;
+}
+.tohit {
+    top: 198px;
+}
+.dam {
+    top: 226px;
+}
+.resmag {
+    top: 263px;
+}
+.resfire {
+    top: 291px;
+}
+.reslight {
+    top: 319px;
+}
+.head {
+    top: 3px;
+    left: 453px;
+    height: 56px;
+    width: 56px;
+}
+.armor {
+    top: 76px;
+    left: 453px;
+    height: 84px;
+    width: 56px;
+}
+.weapon {
+    top: 76px;
+    left: 338px;
+    height: 84px;
+    width: 56px;
+}
+.weapon2 img {
+    opacity: 50%;
+}
+.shield {
+    top: 76px;
+    left: 569px;
+    height: 84px;
+    width: 56px;
+}
+.amulet {
+    top: 33px;
+    left: 525px;
+    height: 28px;
+    width: 28px;
+}
+.ring1 {
+    top: 178px;
+    left: 367px;
+    height: 28px;
+    width: 28px;
+}
+.ring2 {
+    top: 178px;
+    left: 568px;
+    height: 28px;
+    width: 28px;
+}
+.one1 {
+    height: 28px;
+    width: 28px;
+}
+.one3 {
+    height: 84px;
+    width: 28px;
+}
+.two2 {
+    height: 56px;
+    width: 56px;
+}
+.two3 {
+    height: 84px;
+    width: 56px;
+}
+.row1 {
+    top: 223px;
+}
+.row2 {
+    top: 251px;
+}
+.row3 {
+    top: 280px;
+}
+.row4 {
+    top: 309px;
+}
+.col1 {
+    left: 337px;
+}
+.col2 {
+    left: 366px;
+}
+.col3 {
+    left: 395px;
+}
+.col4 {
+    left: 424px;
+}
+.col5 {
+    left: 453px;
+}
+.col6 {
+    left: 482px;
+}
+.col7 {
+    left: 511px;
+}
+.col8 {
+    left: 540px;
+}
+.col9 {
+    left: 569px;
+}
+.col10 {
+    left: 598px;
+}
+.footer {
+    width: 80%;
+    text-align: center;
+    color: #ffffff;
+}
+</style>
+</head>
+<body bgcolor="#2d2d2d">
+
+<center>
+<div class="blog">
+     </div>
+<br>
+<div class="blog"><a name="pvmhigh"></a>
+    <div class="title">Cleric</div>
+    <div class="statsimage">
+        <img src="images/characters/stats.webp"><img src="images/characters/warinv.webp">
+        <div class="stats">
+            <div class="name">Hero of the Nibelungen</div>
+            <div class="level">50</div>
+            <div class="str lefta unique">255</div>
+            <div class="str leftb magic">346</div>
+            <div class="mag lefta unique">50</div>
+            <div class="mag leftb magic">139</div>
+            <div class="dex lefta unique">55</div>
+            <div class="dex leftb magic">141</div>
+            <div class="vit lefta unique">150</div>
+            <div class="vit leftb magic">181</div>
+            <div class="life lefta magic">528</div>
+            <div class="life leftb magic">528</div>
+            <div class="mana lefta magic">339</div>
+            <div class="mana leftb magic">339</div>
+            <div class="class">Cleric</div>
+            <div class="experience">1583495809</div>
+            <div class="next">NONE</div>
+            <div class="ac right magic">275</div>
+            <div class="tohit right magic">220%</div>
+            <div class="dam right magic">181-206</div>
+            <div class="resmag right unique">MAX</div>
+            <div class="resfire right unique">MAX</div>
+            <div class="reslight right unique">MAX</div>
+        </div>
+        <div class="items">
+            <div class="head unitip" title="<b>Nibelung's helm</b><br>(Helm)<br><br>Armor: 4-6 Dur: 15/100<br><br>+20/40 to strenght<br>+15/40 to dexterity<br>+5/40 to vitality<br>-20 to magic"><img src="images\items\overlordshelm.webp"></div>
+            <div class="weapon unitip" title="<b>Hammelin's pipe</b><br>(Mace)<br><br>Damage: 1-8 Dur: 32<br><br>+1/60 magic<br>+1/100 mana<br>+1/75% magic resistance<br>+1 spell level<br>+10 light radius<br>Required: 16 STR"><img src="images\items\mace.webp"></div>
+            <div class="ring1 unitip" title="<b>Ring of the Nibelungen</b><br>(Ring)<br><br>-2 to all attributes<br>+3/6% to damages<br>+10/200 to mana"><img src="images\items\ring.webp"></div>
+         </div>
+    </div>
+    </div>
+</div>
+
+</center>
+</body>
+</html>
