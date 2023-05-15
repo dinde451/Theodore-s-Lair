@@ -2,7 +2,7 @@
 ![tumblr_nvuco6755B1tdo940o1_1280](https://user-images.githubusercontent.com/116229514/228376917-5e714529-0a2f-4a70-ab67-3cec3ae4fef0.png)
 
 Theodore's lair is a mod for Diablo 1 and Hellfire (Hellfire is recommended) that aims to increase the difficulty of the game and add more content based on the germanic folklore. We add some germanic monsters and we rename others, we add some unique item with variables and we add some new bosses.
- 
+    
 
 
 
